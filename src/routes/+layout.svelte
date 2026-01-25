@@ -1,8 +1,15 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import { theme } from '$lib/stores/theme';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import favicon from '$lib/assets/favicon.svg';
   import './layout.css';
+  
+  // Initialiser le thème au montage
+  onMount(() => {
+    theme.init();
+  });
 </script>
 
 <svelte:head>

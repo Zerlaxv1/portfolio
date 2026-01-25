@@ -1,4 +1,6 @@
 <script lang="ts">
+  import ThemeToggle from './ThemeToggle.svelte';
+  
   export let title = 'Mon Portfolio';
 </script>
 
@@ -15,6 +17,7 @@
       <a href="/projects" class="nav-link">Projets</a>
       <a href="/about" class="nav-link">Compétences</a>
       <a href="/contact" class="nav-link">Contact</a>
+      <ThemeToggle />
     </nav>
   </div>
 </header>
@@ -24,11 +27,8 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   }
   
   .header-container {

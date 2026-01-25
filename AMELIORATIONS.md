@@ -14,7 +14,7 @@ Ce document récapitule toutes les améliorations apportées au portfolio en con
 - ✅ **Menu identifiable, visible (always on top) et cohérent** — Header sticky avec navigation claire
 - ✅ **Compétences et Projets dans le menu** — Navigation : Accueil, Projets, Compétences, Contact
 - ✅ **Hyperlien entre Projets et Compétences** — Liens bidirectionnels implémentés
-- ✅ **Max 3 polices** — Instrument Sans (body) + Playfair Display (headings) = 2 polices
+- ✅ **Max 3 polices** — Instrument Sans (body) + Outfit (headings) = 2 polices
 - ✅ **Homogénéité des pages** — Design system cohérent, gabarits uniformes
 - ✅ **Contenu hiérarchisé** — H1 > H2 > H3, tailles progressives, contraste visuel
 - ✅ **Effort esthétique** — Gradient mesh, grain texture, animations, micro-interactions
@@ -104,7 +104,7 @@ Ce document récapitule toutes les améliorations apportées au portfolio en con
 
 ### Typography distinctive
 - **Remplacé Inter → Instrument Sans** (body) — font moderne, élégante
-- **Playfair Display** (headings) — sérif élégant pour contraste
+- **Outfit** (headings) — sans-serif géométrique moderne pour contraste
 - **text-wrap: balance** sur headings pour éviter orphelins
 - **Hiérarchie forte** : h1 (2-3.5rem) → h2 (1.75-2.5rem) → h3 (1.25-1.75rem)
 

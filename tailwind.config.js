@@ -71,8 +71,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        heading: ['Playfair Display', 'serif'],
-        body: ['Inter', 'ui-sans-serif', 'system-ui']
+        heading: ['Outfit', 'sans-serif'],
+        body: ['Instrument Sans', 'ui-sans-serif', 'system-ui']
       }
     }
   },

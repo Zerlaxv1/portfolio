@@ -51,7 +51,7 @@
   }
   
   .logo-text {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: hsl(var(--primary-700));

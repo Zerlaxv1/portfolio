@@ -38,7 +38,9 @@
 				</div>
 			</div>
 			<div class="hero-image">
-        <img alt="Hero de moi" />
+				<div class="image-placeholder">
+					<img alt="Hero de moi" />
+				</div>
 			</div>
 		</div>
 	</section>

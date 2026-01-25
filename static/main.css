@@ -61,7 +61,7 @@
     --accent-950: 250 46% 5%;
   }
   
-  .dark {
+  :root.dark {
     --text-50: 253 54% 5%;
     --text-100: 253 53% 10%;
     --text-200: 253 53% 20%;
@@ -129,7 +129,7 @@
     color: hsl(var(--text-900));
   }
 
-  .dark {
+  html.dark {
     background-color: hsl(var(--background-950));
     color: hsl(var(--text-50));
   }

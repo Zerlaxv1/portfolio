@@ -155,26 +155,26 @@ a {
 }
 
 /* Dark mode styles */
-:root.dark {
+html.dark {
   color-scheme: dark;
 }
 
-.dark body {
+html.dark body {
   background: 
     radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
     linear-gradient(180deg, hsl(var(--background-950)), hsl(var(--background-900)));
 }
 
-.dark body::before {
+html.dark body::before {
   background-image: 
     repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255,255,255,.02) 1px, rgba(255,255,255,.02) 2px);
   opacity: 0.3;
 }
 
-.dark .project-card,
-.dark .contact-form,
-.dark .skill-category {
+html.dark .project-card,
+html.dark .contact-form,
+html.dark .skill-category {
   background: hsl(var(--background-800));
   border-color: rgba(255, 255, 255, 0.08);
 }

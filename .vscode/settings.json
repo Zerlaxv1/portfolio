@@ -1,5 +1,8 @@
 {
 	"files.associations": {
 		"*.css": "css"
+	},
+	"chat.tools.terminal.autoApprove": {
+		"bun": true
 	}
 }

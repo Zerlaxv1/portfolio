@@ -1,6 +1,8 @@
 <script lang="ts">
   import { projects } from '$lib/data/projects';
   import { onMount } from 'svelte';
+  import Button from '$lib/components/Button.svelte';
+  import { Folder, User, ArrowRight } from 'phosphor-svelte';
   
   let mounted = false;
   
@@ -23,8 +25,12 @@
           Bienvenue sur mon portfolio — Un espace dédié à mes compétences, projets et réalisations en développement web.
         </p>
         <div class="hero-actions">
-          <a href="/projects" class="btn-accent">Découvrir mes projets</a>
-          <a href="/about" class="btn-secondary">Mes compétences</a>
+          <Button href="/projects" variant="primary" icon={Folder}>
+            Découvrir mes projets
+          </Button>
+          <Button href="/about" variant="secondary" icon={User}>
+            Mes compétences
+          </Button>
         </div>
       </div>
       <div class="hero-image">
@@ -52,9 +58,7 @@
           <div class="card-actions">
             <a href={`/projects/${project.slug}`} class="card-link">
               Voir les détails
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+              <ArrowRight size={16} weight="bold" />
             </a>
           </div>
         </article>
@@ -62,7 +66,9 @@
     </div>
     
     <div class="view-all">
-      <a href="/projects" class="btn-secondary">Voir tous les projets →</a>
+      <Button href="/projects" variant="secondary" icon={ArrowRight}>
+        Voir tous les projets
+      </Button>
     </div>
   </section>
 </div>
@@ -107,25 +113,7 @@
     animation: fadeUp 0.8s ease 0.2s backwards;
   }
   
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid hsl(var(--accent-500));
-    color: hsl(var(--accent-600));
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    touch-action: manipulation;
-  }
-  
-  .btn-secondary:hover {
-    background: hsl(var(--accent-500));
-    color: white;
-    transform: translateY(-1px);
-  }
+
   
   .hero-image {
     display: flex;

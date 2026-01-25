@@ -7,12 +7,15 @@
 
 <svelte:head>
   <link rel="icon" href={favicon} />
-  <link rel="stylesheet" href="/colors.css" />
+  <link rel="stylesheet" href="/main.css" />
 </svelte:head>
+
+<!-- Skip link for keyboard users -->
+<a href="#content" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Passer au contenu</a>
 
 <Header />
 
-<main>
+<main id="content">
   <slot />
 </main>
 

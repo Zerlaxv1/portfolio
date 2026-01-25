@@ -5,8 +5,11 @@
 
 <section>
   <h4>{title}</h4>
-  <a href={href} target="_blank" rel="noopener noreferrer">Télécharger</a>
+  <p class="sr-only">Document PDF. Utilisez le lien de téléchargement si l'aperçu ne fonctionne pas.</p>
+  <a href={href} target="_blank" rel="noopener noreferrer">Télécharger (PDF)</a>
   <div style="margin-top:1rem;">
-    <embed src={href} type="application/pdf" width="100%" height="500px" />
+    <object data={href} type="application/pdf" width="100%" style="min-height:40vh;">
+      <p>Le navigateur ne peut pas afficher le PDF. <a href={href}>Télécharger le PDF</a>.</p>
+    </object>
   </div>
 </section>

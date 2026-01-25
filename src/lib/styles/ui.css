@@ -33,3 +33,22 @@ h1,h2,h3,h4 {
 }
 
 nav a { color: var(--text-700); text-decoration: none }
+
+/* Focus visible for keyboard users */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 60%, white);
+  outline-offset: 3px;
+}
+
+/* Skip link visible on focus */
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  left: 0.5rem;
+  top: 0.5rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+}

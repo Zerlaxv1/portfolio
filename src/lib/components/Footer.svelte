@@ -14,7 +14,7 @@
       <h3>Liens utiles</h3>
       <ul>
         <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a href="/cv.pdf" target="_blank">CV (PDF)</a></li>
+        <li><a href="/CV_Ducceschi_Nino.pdf" target="_blank">CV (PDF)</a></li>
       </ul>
     </div>
     

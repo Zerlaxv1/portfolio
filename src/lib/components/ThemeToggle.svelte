@@ -1,6 +1,7 @@
 <script lang="ts">
   import { theme } from '$lib/stores/theme';
-  import { SunIcon, MoonIcon } from 'phosphor-svelte';
+  import SunIcon from 'phosphor-svelte/lib/SunIcon';
+  import MoonIcon from 'phosphor-svelte/lib/MoonIcon';
   
   $: isDark = $theme === 'dark';
 </script>

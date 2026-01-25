@@ -21,3 +21,20 @@ You MUST use this tool whenever writing Svelte code before sending it to the use
 
 Generates a Svelte Playground link with the provided code.
 After completing the code, ask the user if they want a playground link. Only call this tool after user confirmation and NEVER if code was written to files in their project.
+
+## Phosphor Icons (phosphor-svelte)
+
+**CRITICAL: Always use specific icon imports to avoid bundle bloat**
+
+❌ BAD - Imports all 30+ MB of icons:
+```ts
+import { SunIcon, MoonIcon } from 'phosphor-svelte';
+```
+
+✅ GOOD - Imports only needed icons (~5KB each):
+```ts
+import SunIcon from 'phosphor-svelte/lib/SunIcon';
+import MoonIcon from 'phosphor-svelte/lib/MoonIcon';
+```
+
+Always use the pattern `phosphor-svelte/lib/{IconName}` for individual icon imports.

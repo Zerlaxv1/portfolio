@@ -59,8 +59,8 @@
     --accent-800: 252 47% 20%;
     --accent-900: 254 49% 10%;
     --accent-950: 250 46% 5%;
-    
   }
+  
   .dark {
     --text-50: 253 54% 5%;
     --text-100: 253 53% 10%;
@@ -121,6 +121,16 @@
     --accent-800: 252 47% 80%;
     --accent-900: 254 49% 90%;
     --accent-950: 255 46% 95%;
-    
+  }
+
+  /* Application automatique des couleurs de base */
+  html {
+    background-color: hsl(var(--background-50));
+    color: hsl(var(--text-900));
+  }
+
+  .dark {
+    background-color: hsl(var(--background-950));
+    color: hsl(var(--text-50));
   }
 }

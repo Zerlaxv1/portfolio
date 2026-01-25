@@ -1,253 +1,250 @@
 <script lang="ts">
-  import { projects } from '$lib/data/projects';
-  import { onMount } from 'svelte';
-  import Button from '$lib/components/Button.svelte';
-  import { FolderIcon, UserIcon, ArrowRightIcon } from 'phosphor-svelte';
-  
-  let mounted = false;
-  
-  onMount(() => {
-    mounted = true;
-  });
+	import { projects } from '$lib/data/projects';
+	import { onMount } from 'svelte';
+	import Button from '$lib/components/Button.svelte';
+	import FolderIcon from 'phosphor-svelte/lib/FolderIcon';
+	import UserIcon from 'phosphor-svelte/lib/UserIcon';
+	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
+
+	let mounted = false;
+
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
 <svelte:head>
-  <title>Accueil — Mon Portfolio</title>
-  <meta name="description" content="Portfolio de développement web — Compétences, projets et réalisations" />
+	<title>Accueil — Mon Portfolio</title>
+	<meta
+		name="description"
+		content="Portfolio de développement web — Compétences, projets et réalisations"
+	/>
 </svelte:head>
 
 <div class="home-page" class:mounted>
-  <section class="hero-section">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>Développeur Web Full-Stack</h1>
-        <p class="hero-description">
-          Bienvenue sur mon portfolio — Un espace dédié à mes compétences, projets et réalisations en développement web.
-        </p>
-        <div class="hero-actions">
-          <Button href="/projects" variant="primary" icon={FolderIcon}>
-            Découvrir mes projets
-          </Button>
-          <Button href="/about" variant="secondary" icon={UserIcon}>
-            Mes compétences
-          </Button>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="image-placeholder">
-          <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="8" r="5"/>
-            <path d="M20 21a8 8 0 1 0-16 0"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </section>
+	<section class="hero-section">
+		<div class="hero-content">
+			<div class="hero-text">
+				<h1>Développeur Web Full-Stack</h1>
+				<p class="hero-description">
+					Bienvenue sur mon portfolio — Un espace dédié à mes compétences, projets et réalisations
+					en développement web.
+				</p>
+				<div class="hero-actions">
+					<Button href="/projects" variant="primary" icon={FolderIcon}>
+						Découvrir mes projets
+					</Button>
+					<Button href="/about" variant="secondary" icon={UserIcon}>Mes compétences</Button>
+				</div>
+			</div>
+			<div class="hero-image">
+        <img alt="Hero de moi" />
+			</div>
+		</div>
+	</section>
 
-  <section class="projects-section">
-    <h2>Projets récents</h2>
-    <p class="section-description">
-      Découvrez une sélection de mes réalisations et expériences professionnelles.
-    </p>
-    
-    <div class="projects-grid">
-      {#each projects.slice(0, 3) as project, i}
-        <article class="project-card" style="--delay: {i * 0.1}s">
-          <h3>{project.title}</h3>
-          <p>{project.short}</p>
-          <div class="card-actions">
-            <a href={`/projects/${project.slug}`} class="card-link">
-              Voir les détails
-              <ArrowRightIcon size={16} weight="bold" />
-            </a>
-          </div>
-        </article>
-      {/each}
-    </div>
-    
-    <div class="view-all">
-      <Button href="/projects" variant="secondary" icon={ArrowRightIcon}>
-        Voir tous les projets
-      </Button>
-    </div>
-  </section>
+	<section class="projects-section">
+		<h2>Projets récents</h2>
+		<p class="section-description">
+			Découvrez une sélection de mes réalisations et expériences professionnelles.
+		</p>
+
+		<div class="projects-grid">
+			{#each projects.slice(0, 3) as project, i}
+				<article class="project-card" style="--delay: {i * 0.1}s">
+					<h3>{project.title}</h3>
+					<p>{project.short}</p>
+					<div class="card-actions">
+						<a href={`/projects/${project.slug}`} class="card-link">
+							Voir les détails
+							<ArrowRightIcon size={16} weight="bold" />
+						</a>
+					</div>
+				</article>
+			{/each}
+		</div>
+
+		<div class="view-all">
+			<Button href="/projects" variant="secondary" icon={ArrowRightIcon}>
+				Voir tous les projets
+			</Button>
+		</div>
+	</section>
 </div>
 
 <style>
-  .home-page {
-    opacity: 0;
-    transition: opacity 0.6s ease;
-  }
-  
-  .home-page.mounted {
-    opacity: 1;
-  }
-  
-  .hero-section {
-    padding: 3rem 0 5rem;
-  }
-  
-  .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  
-  .hero-text h1 {
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s ease backwards;
-  }
-  
-  .hero-description {
-    font-size: 1.125rem;
-    color: hsl(var(--text-700));
-    margin-bottom: 2rem;
-    animation: fadeUp 0.8s ease 0.1s backwards;
-  }
-  
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    animation: fadeUp 0.8s ease 0.2s backwards;
-  }
-  
+	.home-page {
+		opacity: 0;
+		transition: opacity 0.6s ease;
+	}
 
-  
-  .hero-image {
-    display: flex;
-    justify-content: center;
-    animation: fadeUp 0.8s ease 0.3s backwards;
-  }
-  
-  .image-placeholder {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, hsl(var(--accent-100)), hsl(var(--primary-100)));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: hsl(var(--accent-600));
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  }
-  
-  .projects-section {
-    padding: 4rem 0;
-  }
-  
-  .projects-section h2 {
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
-  
-  .section-description {
-    text-align: center;
-    color: hsl(var(--text-600));
-    margin-bottom: 3rem;
-  }
-  
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-  
-  .project-card {
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: 12px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-    animation-delay: var(--delay);
-  }
-  
-  .project-card:hover {
-    border-color: hsl(var(--accent-300));
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    transform: translateY(-4px);
-  }
-  
-  .project-card h3 {
-    margin: 0 0 0.75rem;
-    font-size: 1.5rem;
-  }
-  
-  .project-card p {
-    color: hsl(var(--text-700));
-    margin-bottom: 1.5rem;
-  }
-  
-  .card-actions {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: hsl(var(--accent-600));
-    font-weight: 600;
-    text-decoration: none;
-    transition: gap 0.3s ease;
-  }
-  
-  .card-link:hover {
-    gap: 0.75rem;
-  }
-  
-  .view-all {
-    text-align: center;
-  }
-  
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .hero-content {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    
-    .hero-image {
-      order: -1;
-    }
-    
-    .image-placeholder {
-      width: 200px;
-      height: 200px;
-    }
-    
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    .home-page,
-    .project-card {
-      animation: none;
-      opacity: 1;
-    }
-    
-    .hero-text h1,
-    .hero-description,
-    .hero-actions,
-    .hero-image {
-      animation: none;
-    }
-  }
+	.home-page.mounted {
+		opacity: 1;
+	}
+
+	.hero-section {
+		padding: 3rem 0 5rem;
+	}
+
+	.hero-content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+
+	.hero-text h1 {
+		margin-bottom: 1.5rem;
+		animation: fadeUp 0.8s ease backwards;
+	}
+
+	.hero-description {
+		font-size: 1.125rem;
+		color: hsl(var(--text-700));
+		margin-bottom: 2rem;
+		animation: fadeUp 0.8s ease 0.1s backwards;
+	}
+
+	.hero-actions {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		animation: fadeUp 0.8s ease 0.2s backwards;
+	}
+
+	.hero-image {
+		display: flex;
+		justify-content: center;
+		animation: fadeUp 0.8s ease 0.3s backwards;
+	}
+
+	.image-placeholder {
+		width: 280px;
+		height: 280px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, hsl(var(--accent-100)), hsl(var(--primary-100)));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: hsl(var(--accent-600));
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+	}
+
+	.projects-section {
+		padding: 4rem 0;
+	}
+
+	.projects-section h2 {
+		text-align: center;
+		margin-bottom: 0.5rem;
+	}
+
+	.section-description {
+		text-align: center;
+		color: hsl(var(--text-600));
+		margin-bottom: 3rem;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+		margin-bottom: 3rem;
+	}
+
+	.project-card {
+		background: white;
+		border: 1px solid rgba(0, 0, 0, 0.06);
+		border-radius: 12px;
+		padding: 2rem;
+		transition: all 0.3s ease;
+		opacity: 0;
+		animation: fadeUp 0.6s ease forwards;
+		animation-delay: var(--delay);
+	}
+
+	.project-card:hover {
+		border-color: hsl(var(--accent-300));
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+		transform: translateY(-4px);
+	}
+
+	.project-card h3 {
+		margin: 0 0 0.75rem;
+		font-size: 1.5rem;
+	}
+
+	.project-card p {
+		color: hsl(var(--text-700));
+		margin-bottom: 1.5rem;
+	}
+
+	.card-actions {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.card-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: hsl(var(--accent-600));
+		font-weight: 600;
+		text-decoration: none;
+		transition: gap 0.3s ease;
+	}
+
+	.card-link:hover {
+		gap: 0.75rem;
+	}
+
+	.view-all {
+		text-align: center;
+	}
+
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(24px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero-content {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.hero-image {
+			order: -1;
+		}
+
+		.image-placeholder {
+			width: 200px;
+			height: 200px;
+		}
+
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.home-page,
+		.project-card {
+			animation: none;
+			opacity: 1;
+		}
+
+		.hero-text h1,
+		.hero-description,
+		.hero-actions,
+		.hero-image {
+			animation: none;
+		}
+	}
 </style>

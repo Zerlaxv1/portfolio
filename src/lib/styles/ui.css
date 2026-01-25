@@ -1,0 +1,35 @@
+:root {
+  --bg: var(--background-50);
+  --text: var(--text-900);
+  --muted: var(--text-500);
+  --accent: var(--accent-500);
+}
+
+body {
+  background: linear-gradient(180deg, var(--background-50), white);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  line-height: 1.45;
+}
+
+main {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.btn-accent {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+h1,h2,h3,h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-700);
+}
+
+nav a { color: var(--text-700); text-decoration: none }

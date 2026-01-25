@@ -42,7 +42,7 @@
   
   .btn-primary {
     background: hsl(var(--accent-600));
-    color: white;
+    color: hsl(var(--background-50));
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
   
@@ -65,7 +65,7 @@
   
   .btn-secondary:hover {
     background: hsl(var(--accent-500));
-    color: white;
+    color: hsl(var(--background-50));
     transform: translateY(-1px);
   }
   

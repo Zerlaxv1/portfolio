@@ -220,8 +220,8 @@
   }
   
   .contact-form {
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: hsl(var(--background-100));
+    border: 1px solid hsl(var(--text-950) / 0.08);
     border-radius: 12px;
     padding: 2.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -246,12 +246,12 @@
   textarea {
     width: 100%;
     padding: 0.75rem 1rem;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    border: 2px solid hsl(var(--text-950) / 0.1);
     border-radius: 8px;
     font-family: inherit;
     font-size: 1rem;
     transition: all 0.2s ease;
-    background: white;
+    background: hsl(var(--background-50));
     color: hsl(var(--text-900));
   }
   

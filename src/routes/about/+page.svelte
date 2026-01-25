@@ -188,7 +188,7 @@
   
   .btn-secondary:hover {
     background: hsl(var(--accent-500));
-    color: white;
+    color: hsl(var(--background-50));
     transform: translateY(-1px);
   }
   
@@ -213,8 +213,8 @@
   }
   
   .skill-category {
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: hsl(var(--background-100));
+    border: 1px solid hsl(var(--text-950) / 0.08);
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);

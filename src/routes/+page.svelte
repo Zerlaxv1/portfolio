@@ -155,8 +155,8 @@
 	}
 
 	.project-card {
-		background: white;
-		border: 1px solid rgba(0, 0, 0, 0.06);
+		background: hsl(var(--background-100));
+		border: 1px solid hsl(var(--text-950) / 0.06);
 		border-radius: 12px;
 		padding: 2rem;
 		transition: all 0.3s ease;

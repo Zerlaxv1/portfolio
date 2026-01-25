@@ -16,6 +16,12 @@
                 "<node_internals>/**"
             ],
             "type": "node"
+        },
+        {
+            "command": "bun run dev",
+            "name": "Bun attach",
+            "request": "launch",
+            "type": "node-terminal"
         }
     ]
 }

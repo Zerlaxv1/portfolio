@@ -1,50 +1,56 @@
 <script lang="ts">
   import Button from '$lib/components/Button.svelte';
+  import SkillBadge from '$lib/components/SkillBadge.svelte';
   import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
   import GithubLogoIcon from 'phosphor-svelte/lib/GithubLogo';
   import GlobeIcon from 'phosphor-svelte/lib/Globe';
+  import CheckCircleIcon from 'phosphor-svelte/lib/CheckCircle';
+  import MoonIcon from 'phosphor-svelte/lib/Moon';
+  import DeviceMobileIcon from 'phosphor-svelte/lib/DeviceMobile';
+  import RocketLaunchIcon from 'phosphor-svelte/lib/RocketLaunch';
+  import EyeIcon from 'phosphor-svelte/lib/Eye';
+  import SparkleIcon from 'phosphor-svelte/lib/Sparkle';
+  
+  import { getSkill } from '$lib/data/skills';
+  import PortfolioModerneDescription from '$lib/components/projects/PortfolioModerneDescription.svelte';
   
   // Projet en dur pour tester le design
   const project = {
     slug: 'portfolio-moderne',
     title: 'Portfolio Moderne',
     short: 'Site portfolio responsive avec SvelteKit et thème dark/light.',
-    description: `
-      <p>Ce projet est un site portfolio moderne développé avec SvelteKit, présentant mes compétences et projets de manière élégante et professionnelle.</p>
-      
-      <h3>Contexte</h3>
-      <p>J'avais besoin d'un portfolio pour présenter mon travail de manière professionnelle. L'objectif était de créer une expérience utilisateur fluide avec des animations subtiles et un design épuré.</p>
-      
-      <h3>Défis techniques</h3>
-      <ul>
-        <li><strong>Système de thème</strong> : Implémentation d'un système de thème dark/light avec persistance localStorage et détection des préférences système</li>
-        <li><strong>Performance</strong> : Optimisation du bundle en utilisant des imports spécifiques pour les icônes Phosphor (éviter 30MB de bundle)</li>
-        <li><strong>Accessibilité</strong> : Focus visible, skip links, et support des préférences de mouvement réduit</li>
-      </ul>
-      
-      <h3>Résultats</h3>
-      <p>Un site entièrement statique, léger, accessible (WCAG AA) et avec un score Lighthouse de 100/100 sur toutes les métriques.</p>
-    `,
+    description: PortfolioModerneDescription,
     cover: '/images/portfolio-cover.jpg',
     github: 'https://github.com/username/portfolio',
     demo: 'https://portfolio.example.com',
-    skills: ['SvelteKit', 'TypeScript', 'Tailwind CSS', 'Vite', 'Phosphor Icons'],
+    skills: [
+      getSkill('sveltekit'),
+      getSkill('typescript'),
+      getSkill('tailwind'),
+      getSkill('vite'),
+      getSkill('phosphor')
+    ].filter(Boolean),
     features: [
-      'Thème dark/light avec persistance',
-      'Design responsive (mobile-first)',
-      'Animations fluides avec Svelte',
-      'Optimisation SEO et performance',
-      'Accessibilité WCAG AA',
-      'Déploiement statique'
+      { text: 'Thème dark/light avec persistance', icon: MoonIcon },
+      { text: 'Design responsive (mobile-first)', icon: DeviceMobileIcon },
+      { text: 'Animations fluides avec Svelte', icon: SparkleIcon },
+      { text: 'Optimisation SEO et performance', icon: RocketLaunchIcon },
+      { text: 'Accessibilité WCAG AA', icon: EyeIcon },
+      { text: 'Déploiement statique', icon: CheckCircleIcon }
     ],
     screenshots: [
       { url: '/images/portfolio-home.jpg', caption: "Page d'accueil avec hero section" },
       { url: '/images/portfolio-projects.jpg', caption: 'Grille de projets responsive' },
       { url: '/images/portfolio-dark.jpg', caption: 'Mode dark avec transitions douces' }
     ],
-    date: 'Janvier 2026',
-    status: 'Terminé'
+    date: new Date('2026-01-26'),
+    status: 'Terminé' as const
   };
+  
+  const formattedDate = project.date ? new Intl.DateTimeFormat('fr-FR', { 
+    year: 'numeric', 
+    month: 'long' 
+  }).format(project.date) : null;
 </script>
 
 <svelte:head>
@@ -58,8 +64,8 @@
     <p class="project-tagline">{project.short}</p>
     
     <div class="project-meta">
-      {#if project.date}
-        <span class="meta-item">📅 {project.date}</span>
+      {#if formattedDate}
+        <span class="meta-item">📅 {formattedDate}</span>
       {/if}
       {#if project.status}
         <span class="meta-item status" class:status-complete={project.status === 'Terminé'}>
@@ -93,7 +99,7 @@
       <h2>Technologies utilisées</h2>
       <div class="skills-list">
         {#each project.skills as skill}
-          <span class="skill-badge">{skill}</span>
+          <SkillBadge {skill} />
         {/each}
       </div>
     </section>
@@ -102,7 +108,7 @@
   {#if project.description}
     <section class="project-section project-description">
       <h2>À propos du projet</h2>
-      {@html project.description}
+      <svelte:component this={project.description} />
     </section>
   {/if}
 
@@ -111,7 +117,10 @@
       <h2>Fonctionnalités principales</h2>
       <ul class="features-list">
         {#each project.features as feature}
-          <li>{feature}</li>
+          <li>
+            <svelte:component this={feature.icon} size={18} weight="bold" class="feature-icon" />
+            {feature.text}
+          </li>
         {/each}
       </ul>
     </section>
@@ -221,51 +230,8 @@
     gap: 0.75rem;
   }
 
-  .skill-badge {
-    padding: 0.5rem 1rem;
-    background: hsl(var(--accent-50));
-    color: hsl(var(--accent-700));
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-  }
-
-  .project-description :global(h3) {
-    font-size: 1.375rem;
-    margin: 2rem 0 1rem;
-    color: hsl(var(--primary-600));
-  }
-
-  .project-description :global(p) {
-    margin-bottom: 1.25rem;
-    line-height: 1.7;
-    color: hsl(var(--text-800));
-  }
-
-  .project-description :global(ul) {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 1.5rem;
-  }
-
-  .project-description :global(li) {
-    padding-left: 1.5rem;
-    margin-bottom: 0.75rem;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .project-description :global(li::before) {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: hsl(var(--accent-600));
-    font-weight: 700;
-  }
-
-  .project-description :global(strong) {
-    color: hsl(var(--primary-700));
-    font-weight: 600;
+  .project-description {
+    /* Les styles sont dans le composant description */
   }
 
   .features-list {
@@ -277,29 +243,20 @@
 
   .features-list li {
     padding: 1rem 1.25rem;
+    padding-left: 3rem;
     background: hsl(var(--background-100));
     border: 1px solid hsl(var(--text-950) / 0.08);
     border-radius: 10px;
     position: relative;
-    padding-left: 3rem;
-  }
-
-  .features-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 24px;
-    height: 24px;
-    background: hsl(var(--accent-600));
-    color: hsl(var(--background-50));
-    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.875rem;
+    gap: 0.75rem;
+  }
+
+  .features-list li :global(.feature-icon) {
+    position: absolute;
+    left: 1rem;
+    color: hsl(var(--accent-600));
   }
 
   .screenshots-grid {

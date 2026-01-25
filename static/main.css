@@ -128,9 +128,4 @@
     background-color: hsl(var(--background-50));
     color: hsl(var(--text-900));
   }
-
-  html.dark {
-    background-color: hsl(var(--background-950));
-    color: hsl(var(--text-50));
-  }
 }

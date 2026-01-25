@@ -1,7 +1,7 @@
 <script lang="ts">
   import ThemeToggle from './ThemeToggle.svelte';
   
-  export let title = 'Mon Portfolio';
+  export let title = 'Ducceschi Nino';
 </script>
 
 <header class="site-header">

@@ -2,7 +2,7 @@
   import { projects } from '$lib/data/projects';
   import { onMount } from 'svelte';
   import Button from '$lib/components/Button.svelte';
-  import { Folder, User, ArrowRight } from 'phosphor-svelte';
+  import { FolderIcon, UserIcon, ArrowRightIcon } from 'phosphor-svelte';
   
   let mounted = false;
   
@@ -25,10 +25,10 @@
           Bienvenue sur mon portfolio — Un espace dédié à mes compétences, projets et réalisations en développement web.
         </p>
         <div class="hero-actions">
-          <Button href="/projects" variant="primary" icon={Folder}>
+          <Button href="/projects" variant="primary" icon={FolderIcon}>
             Découvrir mes projets
           </Button>
-          <Button href="/about" variant="secondary" icon={User}>
+          <Button href="/about" variant="secondary" icon={UserIcon}>
             Mes compétences
           </Button>
         </div>
@@ -58,7 +58,7 @@
           <div class="card-actions">
             <a href={`/projects/${project.slug}`} class="card-link">
               Voir les détails
-              <ArrowRight size={16} weight="bold" />
+              <ArrowRightIcon size={16} weight="bold" />
             </a>
           </div>
         </article>
@@ -66,7 +66,7 @@
     </div>
     
     <div class="view-all">
-      <Button href="/projects" variant="secondary" icon={ArrowRight}>
+      <Button href="/projects" variant="secondary" icon={ArrowRightIcon}>
         Voir tous les projets
       </Button>
     </div>

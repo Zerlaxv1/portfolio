@@ -5,19 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch via Bun",
-            "request": "launch",
-            "runtimeArgs": [
-                "run",
-                "dev"
-            ],
-            "runtimeExecutable": "bun",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "type": "node"
-        },
-        {
             "command": "bun run dev",
             "name": "Bun attach",
             "request": "launch",

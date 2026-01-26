@@ -6,7 +6,7 @@
 	import FolderIcon from 'phosphor-svelte/lib/FolderIcon';
 	import UserIcon from 'phosphor-svelte/lib/UserIcon';
 	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
-	import Moi from '$lib/assets/images/moi.jpg';
+	import Moi from '$lib/assets/images/moi.webp';
 
 	let mounted = false;
 

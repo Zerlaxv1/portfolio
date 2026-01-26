@@ -39,7 +39,7 @@
 			</div>
 			<div class="hero-image">
 				<div class="image-placeholder">
-					<img alt="Hero de moi" />
+					<img alt="Hero de moi" src="/moi.jpg" class="hero-photo" />
 				</div>
 			</div>
 		</div>
@@ -118,6 +118,13 @@
 		display: flex;
 		justify-content: center;
 		animation: fadeUp 0.8s ease 0.3s backwards;
+	}
+
+	.hero-photo {
+		width: 100%;
+		height: auto;
+		border-radius: 50%;
+		object-fit: cover;
 	}
 
 	.image-placeholder {

@@ -1,0 +1,8 @@
+{
+  "name": "pdf",
+  "source": "anthropics-skills",
+  "description": "Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms.",
+  "description_ja": "PDFファイルの処理",
+  "categories": [],
+  "installedAt": "2026-01-26T12:11:02.842Z"
+}

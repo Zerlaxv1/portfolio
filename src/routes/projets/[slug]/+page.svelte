@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import SkillBadge from '$lib/components/SkillBadge.svelte';
 	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
@@ -125,7 +126,7 @@
 	{/if}
 
 	<div class="project-footer">
-		<Button href="/projets" variant="secondary" icon={ArrowRightIcon} iconPosition="left">
+		<Button href={resolve('/projets')} variant="secondary" icon={ArrowRightIcon} iconPosition="left">
 			Retour aux projets
 		</Button>
 	</div>

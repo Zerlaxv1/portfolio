@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import ThemeToggle from './ThemeToggle.svelte';
 
 	export let title = 'Ducceschi Nino';
@@ -7,16 +8,16 @@
 <header class="site-header">
 	<div class="header-container">
 		<div class="logo-section">
-			<a href="/" aria-label="Retour à l'accueil" class="logo-link">
+			<a href={resolve('/')} aria-label="Retour à l'accueil" class="logo-link">
 				<span class="logo-text">{title}</span>
 			</a>
 		</div>
 
 		<nav aria-label="Navigation principale" class="main-nav">
-			<a href="/" class="nav-link">Accueil</a>
-			<a href="/projets" class="nav-link">Projets</a>
-			<a href="/competences" class="nav-link">Compétences</a>
-			<a href="/contact" class="nav-link">Contact</a>
+			<a href={resolve('/')} class="nav-link">Accueil</a>
+			<a href={resolve('/projets')} class="nav-link">Projets</a>
+			<a href={resolve('/competences')} class="nav-link">Compétences</a>
+			<a href={resolve('/contact')} class="nav-link">Contact</a>
 			<ThemeToggle />
 		</nav>
 	</div>

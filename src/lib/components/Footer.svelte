@@ -1,12 +1,16 @@
+<script lang="ts">
+	import { resolve } from '$app/paths';
+</script>
+
 <footer class="site-footer">
 	<div class="footer-content">
 		<div class="footer-section">
 			<h3>Navigation</h3>
 			<ul>
-				<li><a href="/">Accueil</a></li>
-				<li><a href="/projets">Projets</a></li>
-				<li><a href="/competences">Compétences</a></li>
-				<li><a href="/contact">Contact</a></li>
+				<li><a href={resolve('/')}>Accueil</a></li>
+				<li><a href={resolve('/projets')}>Projets</a></li>
+				<li><a href={resolve('/competences')}>Compétences</a></li>
+				<li><a href={resolve('/contact')}>Contact</a></li>
 			</ul>
 		</div>
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import SkillBadge from '$lib/components/SkillBadge.svelte';
 	import DownloadIcon from 'phosphor-svelte/lib/DownloadIcon';
@@ -62,7 +63,7 @@
 					<Button href={cvHref} variant="primary" icon={DownloadIcon}>
 						Télécharger mon CV
 					</Button>
-					<Button href="/contact" variant="secondary" icon={EnvelopeIcon}>Me contacter</Button>
+					<Button href={resolve('/contact')} variant="secondary" icon={EnvelopeIcon}>Me contacter</Button>
 				</div>
 			</div>
 		</div>

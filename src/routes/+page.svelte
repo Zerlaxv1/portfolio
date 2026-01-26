@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { projects } from '$lib/data/projects';
 	import { onMount } from 'svelte';
 	import Button from '$lib/components/Button.svelte';
@@ -32,10 +33,10 @@
 					en développement web.
 				</p>
 				<div class="hero-actions">
-					<Button href="/projets" variant="primary" icon={FolderIcon}>
+					<Button href={resolve('/projets')} variant="primary" icon={FolderIcon}>
 						Découvrir mes projets
 					</Button>
-					<Button href="/competences" variant="secondary" icon={UserIcon}>Mes compétences</Button>
+					<Button href={resolve('/competences')} variant="secondary" icon={UserIcon}>Mes compétences</Button>
 				</div>
 			</div>
 			<div class="hero-image">
@@ -58,7 +59,7 @@
 					<h3>{project.title}</h3>
 					<p>{project.short}</p>
 					<div class="card-actions">
-						<a href={`/projets/${project.slug}`} class="card-link">
+						<a href={resolve(`/projets/${project.slug}`)} class="card-link">
 							Voir les détails
 							<ArrowRightIcon size={16} weight="bold" />
 						</a>
@@ -68,7 +69,7 @@
 		</div>
 
 		<div class="view-all">
-			<Button href="/projets" variant="secondary" icon={ArrowRightIcon}>
+			<Button href={resolve('/projets')} variant="secondary" icon={ArrowRightIcon}>
 				Voir tous les projets
 			</Button>
 		</div>

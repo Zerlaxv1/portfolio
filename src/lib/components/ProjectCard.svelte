@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Project } from '$lib/data/projects';
+	import SkillBadge from './SkillBadge.svelte';
 
 	export let project: Project;
 </script>
@@ -14,7 +15,7 @@
 	{#if project.skills && project.skills.length > 0}
 		<div class="card-skills">
 			{#each project.skills as skill}
-				<span class="skill-tag">{skill.name}</span>
+				<SkillBadge {skill} size="sm" />
 			{/each}
 		</div>
 	{/if}
@@ -92,16 +93,6 @@
 		flex-wrap: wrap;
 		gap: 0.5rem;
 		margin-bottom: 1.5rem;
-	}
-
-	.skill-tag {
-		display: inline-block;
-		padding: 0.25rem 0.75rem;
-		background: hsl(var(--accent-50));
-		color: hsl(var(--accent-700));
-		border-radius: 6px;
-		font-size: 0.85rem;
-		font-weight: 500;
 	}
 
 	.card-actions {

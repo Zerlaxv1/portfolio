@@ -51,3 +51,24 @@ The following skills are available in this workspace.
 | [pdf](.github/skills/pdf/SKILL.md) | Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. |
 
 <!-- skill-ninja-END -->
+
+## Remarque sur les URLs et assets (build CI)
+
+- Pour que le build côté CI (GitHub Actions) et le prerender respectent `paths.base` et `paths.assets` configurés dans `svelte.config.js`, **construisez toujours** :
+
+	- les `href` avec `resolve()` (importer depuis `$app/paths`)
+	- les URLs vers les fichiers statiques avec `asset()` (importer depuis `$app/paths`)
+
+	Exemple :
+
+	```ts
+	import { resolve, asset } from '$app/paths';
+
+	// href vers une page de compétence (respecte paths.base)
+	const url = resolve(`/competences/${skill.id}`);
+
+	// URL vers un fichier statique dans static/ (respecte paths.assets)
+	const cvUrl = asset(`/CV.pdf`);
+	```
+
+	Sans ces helpers, le prerender peut générer des erreurs du type "does not begin with `base`" ou produire des liens statiques cassés en production.

@@ -1,21 +1,20 @@
-import CodeIcon from 'phosphor-svelte/lib/CodeIcon';
-import DatabaseIcon from 'phosphor-svelte/lib/DatabaseIcon';
-import PaintBrushIcon from 'phosphor-svelte/lib/PaintBrushIcon';
-import GitBranchIcon from 'phosphor-svelte/lib/GitBranchIcon';
-import BracketsAngleIcon from 'phosphor-svelte/lib/BracketsAngleIcon';
-import FileHtmlIcon from 'phosphor-svelte/lib/FileHtmlIcon';
-import FileCssIcon from 'phosphor-svelte/lib/FileCssIcon';
-import FileJsIcon from 'phosphor-svelte/lib/FileJsIcon';
-import FileVueIcon from 'phosphor-svelte/lib/FileVueIcon';
-import FramerLogoIcon from 'phosphor-svelte/lib/FramerLogoIcon';
-import PackageIcon from 'phosphor-svelte/lib/PackageIcon';
-import type { IconComponentProps } from 'phosphor-svelte';
+import CodeIcon from '~icons/ph/code';
+import DatabaseIcon from '~icons/ph/database';
+import PaintBrushIcon from '~icons/ph/paint-brush';
+import GitBranchIcon from '~icons/ph/git-branch';
+import BracketsAngleIcon from '~icons/ph/brackets-angle';
+import FileHtmlIcon from '~icons/ph/file-html';
+import FileCssIcon from '~icons/ph/file-css';
+import FileJsIcon from '~icons/ph/file-js';
+import FileVueIcon from '~icons/ph/file-vue';
+import FramerLogoIcon from '~icons/ph/framer-logo';
+import PackageIcon from '~icons/ph/package';
 import type { Component } from 'svelte';
 
 export type Skill = {
 	id: string;
 	name: string;
-	icon: Component<IconComponentProps>;
+	icon: Component;
 	category: 'frontend' | 'backend' | 'tools' | 'design';
 };
 

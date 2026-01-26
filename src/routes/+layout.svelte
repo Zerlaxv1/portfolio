@@ -5,6 +5,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import favicon from '$lib/assets/favicon.svg';
 	import './layout.css';
+	import '$lib/styles/main.css'
 
 	// Initialiser le thème au montage
 	onMount(() => {
@@ -14,7 +15,6 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<link rel="stylesheet" href="/main.css" />
 </svelte:head>
 
 <!-- Skip link for keyboard users -->

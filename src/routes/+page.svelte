@@ -5,6 +5,7 @@
 	import FolderIcon from 'phosphor-svelte/lib/FolderIcon';
 	import UserIcon from 'phosphor-svelte/lib/UserIcon';
 	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
+	import Moi from '$lib/assets/images/moi.jpg';
 
 	let mounted = false;
 
@@ -31,15 +32,15 @@
 					en développement web.
 				</p>
 				<div class="hero-actions">
-					<Button href="/projects" variant="primary" icon={FolderIcon}>
+					<Button href="/projets" variant="primary" icon={FolderIcon}>
 						Découvrir mes projets
 					</Button>
-					<Button href="/about" variant="secondary" icon={UserIcon}>Mes compétences</Button>
+					<Button href="/competences" variant="secondary" icon={UserIcon}>Mes compétences</Button>
 				</div>
 			</div>
 			<div class="hero-image">
 				<div class="image-placeholder">
-					<img alt="Hero de moi" src="/moi.jpg" class="hero-photo" />
+					<img alt="Hero de moi" src={Moi} class="hero-photo" />
 				</div>
 			</div>
 		</div>
@@ -57,7 +58,7 @@
 					<h3>{project.title}</h3>
 					<p>{project.short}</p>
 					<div class="card-actions">
-						<a href={`/projects/${project.slug}`} class="card-link">
+						<a href={`/projets/${project.slug}`} class="card-link">
 							Voir les détails
 							<ArrowRightIcon size={16} weight="bold" />
 						</a>
@@ -67,7 +68,7 @@
 		</div>
 
 		<div class="view-all">
-			<Button href="/projects" variant="secondary" icon={ArrowRightIcon}>
+			<Button href="/projets" variant="secondary" icon={ArrowRightIcon}>
 				Voir tous les projets
 			</Button>
 		</div>

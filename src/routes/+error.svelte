@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { base } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import HouseIcon from 'phosphor-svelte/lib/HouseIcon';
 	import WarningCircleIcon from 'phosphor-svelte/lib/WarningCircleIcon';
@@ -35,7 +34,7 @@
 		</p>
 
 		<div class="error-actions">
-			<Button href="{base}/" variant="primary" icon={HouseIcon}>Retour à l'accueil</Button>
+			<Button href="/" variant="primary" icon={HouseIcon}>Retour à l'accueil</Button>
 		</div>
 	</div>
 </div>

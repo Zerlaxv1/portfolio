@@ -125,7 +125,7 @@
 	{/if}
 
 	<div class="project-footer">
-		<Button href="/projects" variant="secondary" icon={ArrowRightIcon} iconPosition="left">
+		<Button href="/projets" variant="secondary" icon={ArrowRightIcon} iconPosition="left">
 			Retour aux projets
 		</Button>
 	</div>

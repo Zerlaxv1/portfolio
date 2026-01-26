@@ -2,8 +2,8 @@
 	import { page } from '$app/stores';
 	import { resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
-	import HouseIcon from 'phosphor-svelte/lib/HouseIcon';
-	import WarningCircleIcon from 'phosphor-svelte/lib/WarningCircleIcon';
+	import House from '~icons/ph/house';
+	import WarningCircleIcon from '~icons/ph/warning-circle';
 </script>
 
 <svelte:head>
@@ -13,7 +13,7 @@
 <div class="error-page">
 	<div class="error-content">
 		<div class="error-icon">
-			<WarningCircleIcon size={120} weight="duotone" />
+			<WarningCircleIcon width="120" height="120" />
 		</div>
 
 		<h1 class="error-code">{$page.status}</h1>
@@ -35,7 +35,7 @@
 		</p>
 
 		<div class="error-actions">
-			<Button href={resolve('/')} variant="primary" icon={HouseIcon}>Retour à l'accueil</Button>
+			<Button href={resolve('/')} variant="primary" icon={House}>Retour à l'accueil</Button>
 		</div>
 	</div>
 </div>

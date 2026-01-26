@@ -3,9 +3,9 @@
 	import { projects } from '$lib/data/projects';
 	import { onMount } from 'svelte';
 	import Button from '$lib/components/Button.svelte';
-	import FolderIcon from 'phosphor-svelte/lib/FolderIcon';
-	import UserIcon from 'phosphor-svelte/lib/UserIcon';
-	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
+	import FolderIcon from '~icons/ph/folder';
+	import UserIcon from '~icons/ph/user';
+	import ArrowRightIcon from '~icons/ph/arrow-right';
 	import Moi from '$lib/assets/images/moi.webp';
 
 	let mounted = false;
@@ -61,7 +61,7 @@
 					<div class="card-actions">
 						<a href={resolve(`/projets/${project.slug}`)} class="card-link">
 							Voir les détails
-							<ArrowRightIcon size={16} weight="bold" />
+						<ArrowRightIcon width="16" height="16" />
 						</a>
 					</div>
 				</article>

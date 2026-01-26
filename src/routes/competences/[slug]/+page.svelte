@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import Button from '$lib/components/Button.svelte';
-	import ArrowLeftIcon from 'phosphor-svelte/lib/ArrowLeft';
+	import ArrowLeftIcon from '~icons/ph/arrow-left';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
@@ -24,7 +24,7 @@
 			{#each [skill] as s}
 				{@const Icon = s.icon}
 				<div class="skill-icon-large">
-					<Icon size={48} weight="bold" />
+					<Icon width="48" height="48" />
 				</div>
 			{/each}
 			<div class="skill-info">

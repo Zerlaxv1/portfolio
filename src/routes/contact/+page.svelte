@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
-	import EnvelopeIcon from 'phosphor-svelte/lib/EnvelopeIcon';
-	import GithubLogoIcon from 'phosphor-svelte/lib/GithubLogoIcon';
-	import LinkedinLogoIcon from 'phosphor-svelte/lib/LinkedinLogoIcon';
+	import EnvelopeIcon from '~icons/ph/envelope';
+	import GithubLogoIcon from '~icons/ph/github-logo';
+	import LinkedinLogoIcon from '~icons/ph/linkedin-logo';
 
 	const email = 'nino.ducceschi@etu.iut-tlse3.fr';
 </script>
@@ -15,7 +15,7 @@
 <div class="contact-page">
 	<section class="contact-header">
 		<div class="email-icon">
-			<EnvelopeIcon size={80} weight="duotone" />
+			<EnvelopeIcon width="80" height="80" />
 		</div>
 		<h1>Me contacter</h1>
 		<p class="header-description">

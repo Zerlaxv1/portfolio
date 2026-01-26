@@ -2,23 +2,32 @@
 	import { resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import SkillBadge from '$lib/components/SkillBadge.svelte';
-	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
-	import GithubLogoIcon from 'phosphor-svelte/lib/GithubLogoIcon';
-	import GlobeIcon from 'phosphor-svelte/lib/GlobeIcon';
-	import CalendarIcon from 'phosphor-svelte/lib/CalendarIcon';
+	import ArrowRightIcon from '~icons/ph/arrow-right';
+	import GithubLogoIcon from '~icons/ph/github-logo';
+	import GlobeIcon from '~icons/ph/globe';
+	import CalendarIcon from '~icons/ph/calendar';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
 	const project = $derived(data.project);
 
-	const formattedDate = $derived(
-		project.date
-			? new Intl.DateTimeFormat('fr-FR', {
-					year: 'numeric',
-					month: 'long'
-				}).format(project.date)
-			: null
-	);
+	const formattedDate = $derived(() => {
+		if (!project.startDate) return null;
+
+		const formatter = new Intl.DateTimeFormat('fr-FR', {
+			year: 'numeric',
+			month: 'long'
+		});
+
+		const start = formatter.format(project.startDate);
+
+		if (!project.endDate) {
+			return `Depuis ${start}`;
+		}
+
+		const end = formatter.format(project.endDate);
+		return `${start} — ${end}`;
+	});
 </script>
 
 <svelte:head>
@@ -34,7 +43,7 @@
 		<div class="project-meta">
 			{#if formattedDate}
 				<span class="meta-item">
-					<CalendarIcon size={16} weight="bold" class="meta-icon" />
+					<CalendarIcon width="16" height="16" class="meta-icon" />
 					{formattedDate}
 				</span>
 			{/if}
@@ -103,7 +112,7 @@
 				{#each project.features as feature}
 					{@const Icon = feature.icon}
 					<li>
-						<Icon size={18} weight="bold" class="feature-icon" />
+						<Icon width="18" height="18" class="feature-icon" />
 						{feature.text}
 					</li>
 				{/each}

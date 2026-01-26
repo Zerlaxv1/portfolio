@@ -2,8 +2,8 @@
 	import { asset, resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import SkillBadge from '$lib/components/SkillBadge.svelte';
-	import DownloadIcon from 'phosphor-svelte/lib/DownloadIcon';
-	import EnvelopeIcon from 'phosphor-svelte/lib/EnvelopeIcon';
+	import DownloadIcon from '~icons/ph/download';
+	import EnvelopeIcon from '~icons/ph/envelope';
 	import { SKILLS_MAP } from '$lib/data/skills';
 
 	const cvHref = asset('/CV_Ducceschi_Nino.pdf');

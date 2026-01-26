@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Project } from '$lib/data/projects';
+	import { resolve } from '$app/paths';
 	import SkillBadge from './SkillBadge.svelte';
 
 	export let project: Project;
@@ -40,7 +41,7 @@
 				</svg>
 			</a>
 		{/if}
-		<a href={`/projets/${project.slug}`} class="link-details">
+		<a href={resolve(`/projets/${project.slug}`)} class="link-details">
 			Détails du projet
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

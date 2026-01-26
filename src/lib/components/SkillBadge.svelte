@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Skill } from '$lib/data/skills';
+	import { resolve } from '$app/paths';
 
 	let {
 		skill,
@@ -7,7 +8,7 @@
 		clickable = false
 	}: { skill: Skill; size?: 'sm' | 'md' | 'lg'; clickable?: boolean } = $props();
 
-	const href = $derived(clickable ? `/competences/${skill.id}` : undefined);
+	const href = $derived(clickable ? resolve(`/competences/${skill.id}`) : undefined);
 </script>
 
 {#each [skill] as s}

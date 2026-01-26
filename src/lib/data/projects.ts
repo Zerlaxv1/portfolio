@@ -1,5 +1,5 @@
-import type { Skill, getSkill } from './skills';
-import { getSkill as _getSkill } from './skills';
+import type { Skill } from './skills';
+import { getSkill} from './skills';
 import type { Component } from 'svelte';
 import PortfolioModerneDescription from '$lib/components/projects/PortfolioModerneDescription.svelte';
 import BookletDescription from '$lib/components/projects/BookletDescription.svelte';
@@ -40,11 +40,10 @@ export const projects: Project[] = [
 		github: 'https://github.com/Zerlaxv1/portfolio',
 		demo: 'https://portfolio.example.com',
 		skills: [
-			_getSkill('sveltekit'),
-			_getSkill('typescript'),
-			_getSkill('tailwind'),
-			_getSkill('vite'),
-			_getSkill('phosphor')
+			getSkill('sveltekit'),
+			getSkill('typescript'),
+			getSkill('vite'),
+			getSkill('phosphor')
 		].filter((skill): skill is Skill => skill !== undefined),
 		features: [
 			{ text: 'Thème dark/light avec persistance', icon: MoonIcon },
@@ -68,8 +67,18 @@ export const projects: Project[] = [
 		description: BookletDescription,
 		short: "Application d'apprentissage d'anglais ludique pour etudiants.",
 		cover: '/images/booklet-cover.png',
+		screenshots: [
+			{ url: '/images/portfolio-home.jpg', caption: "Page d'accueil avec hero section" },
+			{ url: '/images/portfolio-projects.jpg', caption: 'Grille de projets responsive' },
+			{ url: '/images/portfolio-dark.jpg', caption: 'Mode dark avec transitions douces' }
+		],
 		skills: [
-			_getSkill('sveltekit')
+			getSkill('sveltekit'),
+			getSkill('typescript'),
+			getSkill('drizzle'),
+			getSkill('postgres'),
+			getSkill('phosphor'),
+			getSkill('vite'),
 		].filter((skill): skill is Skill => skill !== undefined),
 		date: new Date('2025-10-13'),
 		status: 'Terminé'

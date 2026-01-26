@@ -1,21 +1,41 @@
 <script lang="ts">
 	import type { Skill } from '$lib/data/skills';
 
-	let { skill, size = 'md' }: { skill: Skill; size?: 'sm' | 'md' | 'lg' } = $props();
+	let {
+		skill,
+		size = 'md',
+		clickable = false
+	}: { skill: Skill; size?: 'sm' | 'md' | 'lg'; clickable?: boolean } = $props();
+
+	const href = $derived(clickable ? `/competences/${skill.id}` : undefined);
 </script>
 
 {#each [skill] as s}
 	{@const Icon = s.icon}
 	{@const iconSize = size === 'sm' ? 14 : size === 'lg' ? 20 : 16}
-	<span
-		class="skill-badge"
-		class:size-sm={size === 'sm'}
-		class:size-md={size === 'md'}
-		class:size-lg={size === 'lg'}
-	>
-		<Icon size={iconSize} weight="bold" />
-		<span>{s.name}</span>
-	</span>
+	{#if href}
+		<a
+			{href}
+			class="skill-badge"
+			class:size-sm={size === 'sm'}
+			class:size-md={size === 'md'}
+			class:size-lg={size === 'lg'}
+			class:clickable
+		>
+			<Icon size={iconSize} weight="bold" />
+			<span>{s.name}</span>
+		</a>
+	{:else}
+		<span
+			class="skill-badge"
+			class:size-sm={size === 'sm'}
+			class:size-md={size === 'md'}
+			class:size-lg={size === 'lg'}
+		>
+			<Icon size={iconSize} weight="bold" />
+			<span>{s.name}</span>
+		</span>
+	{/if}
 {/each}
 
 <style>
@@ -29,11 +49,21 @@
 		border-radius: 8px;
 		font-weight: 600;
 		transition: all 0.2s ease;
+		text-decoration: none;
 	}
 
 	.skill-badge:hover {
 		background: hsl(var(--accent-100));
 		transform: translateY(-1px);
+	}
+
+	.skill-badge.clickable {
+		cursor: pointer;
+	}
+
+	.skill-badge.clickable:hover {
+		background: hsl(var(--accent-200));
+		box-shadow: 0 4px 12px hsl(var(--accent-700) / 0.15);
 	}
 
 	.size-sm {

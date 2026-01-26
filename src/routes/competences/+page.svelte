@@ -73,6 +73,7 @@
 		<h2>Compétences techniques</h2>
 		<p class="section-intro">
 			Technologies et outils que j'utilise régulièrement dans mes projets de développement web.
+			<strong>Cliquez sur une compétence</strong> pour voir les projets associés.
 		</p>
 
 		<div class="skills-grid">
@@ -81,7 +82,7 @@
 					<h3>{category.category}</h3>
 					<div class="skills-list">
 						{#each category.skills as skill}
-							<SkillBadge {skill} size="md" />
+							<SkillBadge {skill} size="md" clickable={true} />
 						{/each}
 					</div>
 				</div>

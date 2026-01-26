@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import SkillBadge from '$lib/components/SkillBadge.svelte';
 	import DownloadIcon from 'phosphor-svelte/lib/DownloadIcon';
 	import EnvelopeIcon from 'phosphor-svelte/lib/EnvelopeIcon';
 	import { SKILLS_MAP } from '$lib/data/skills';
 
-	const cvHref = '/CV_Ducceschi_Nino.pdf';
+	const cvHref = asset('/CV_Ducceschi_Nino.pdf');
 
 	const skillCategories = [
 		{

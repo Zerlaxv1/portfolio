@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 </script>
 
 <footer class="site-footer">
@@ -22,7 +22,7 @@
 						GitHub du Portfolio
 					</a>
 				</li>
-				<li><a href="/CV_Ducceschi_Nino.pdf" target="_blank">CV (PDF)</a></li>
+				<li><a href={asset('/CV_Ducceschi_Nino.pdf')} target="_blank">CV (PDF)</a></li>
 			</ul>
 		</div>
 

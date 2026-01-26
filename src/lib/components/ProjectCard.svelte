@@ -40,7 +40,7 @@
 				</svg>
 			</a>
 		{/if}
-		<a href={`/projects/${project.slug}`} class="link-details">
+		<a href={`/projets/${project.slug}`} class="link-details">
 			Détails du projet
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

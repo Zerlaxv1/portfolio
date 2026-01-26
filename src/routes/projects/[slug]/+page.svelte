@@ -32,9 +32,10 @@
 
 		<div class="project-meta">
 			{#if formattedDate}
-				<span class="meta-item"
-					><CalendarIcon size={16} weight="bold" class="meta-icon" /> {formattedDate}</span
-				>
+				<span class="meta-item">
+					<CalendarIcon size={16} weight="bold" class="meta-icon" />
+					{formattedDate}
+				</span>
 			{/if}
 			{#if project.status}
 				<span class="meta-item status" class:status-complete={project.status === 'Terminé'}>
@@ -160,6 +161,9 @@
 	}
 
 	.meta-item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 		padding: 0.5rem 1rem;
 		background: hsl(var(--background-100));
 		border: 1px solid hsl(var(--text-950) / 0.08);

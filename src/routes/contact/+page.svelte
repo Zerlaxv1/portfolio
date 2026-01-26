@@ -4,7 +4,7 @@
 	import GithubLogoIcon from 'phosphor-svelte/lib/GithubLogoIcon';
 	import LinkedinLogoIcon from 'phosphor-svelte/lib/LinkedinLogoIcon';
 
-	const email = 'nino.ducceschi@gmail.com';
+	const email = 'nino.ducceschi@etu.iut-tlse3.fr';
 </script>
 
 <svelte:head>
@@ -40,7 +40,7 @@
 			<p class="social-description">Retrouvez-moi également sur ces plateformes :</p>
 			<div class="social-links">
 				<Button
-					href="https://github.com/ninoduc"
+					href="https://github.com/Zerlaxv1"
 					variant="secondary"
 					icon={GithubLogoIcon}
 					target="_blank"
@@ -49,7 +49,7 @@
 					GitHub
 				</Button>
 				<Button
-					href="https://linkedin.com"
+					href="https://www.linkedin.com/in/nino-ducceschi"
 					variant="secondary"
 					icon={LinkedinLogoIcon}
 					target="_blank"

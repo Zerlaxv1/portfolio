@@ -14,8 +14,8 @@
 
 		<nav aria-label="Navigation principale" class="main-nav">
 			<a href="/" class="nav-link">Accueil</a>
-			<a href="/projects" class="nav-link">Projets</a>
-			<a href="/about" class="nav-link">Compétences</a>
+			<a href="/projets" class="nav-link">Projets</a>
+			<a href="/competences" class="nav-link">Compétences</a>
 			<a href="/contact" class="nav-link">Contact</a>
 			<ThemeToggle />
 		</nav>

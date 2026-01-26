@@ -4,8 +4,8 @@
 			<h3>Navigation</h3>
 			<ul>
 				<li><a href="/">Accueil</a></li>
-				<li><a href="/projects">Projets</a></li>
-				<li><a href="/about">Compétences</a></li>
+				<li><a href="/projets">Projets</a></li>
+				<li><a href="/competences">Compétences</a></li>
 				<li><a href="/contact">Contact</a></li>
 			</ul>
 		</div>
@@ -21,9 +21,8 @@
 		<div class="footer-section">
 			<h3>Contact</h3>
 			<p>
-				Pour toute demande professionnelle, n’hésitez pas à me contacter via le <a href="/contact"
-					>formulaire</a
-				>.
+				Pour toute demande professionnelle, n’hésitez pas à me contacter via mail à
+				<a href="mailto:nino.ducceschi@etu.iut-tlse3.fr">nino.ducceschi@etu.iut-tlse3.fr</a>.
 			</p>
 		</div>
 	</div>

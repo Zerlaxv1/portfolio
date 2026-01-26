@@ -59,7 +59,7 @@
 					Expérience en développement front-end avec les technologies modernes.
 				</p>
 				<div class="header-actions">
-					<Button href={cvHref} variant="primary" icon={DownloadIcon} download>
+					<Button href={cvHref} variant="primary" icon={DownloadIcon}>
 						Télécharger mon CV
 					</Button>
 					<Button href="/contact" variant="secondary" icon={EnvelopeIcon}>Me contacter</Button>

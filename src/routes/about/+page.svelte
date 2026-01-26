@@ -1,31 +1,28 @@
 <script lang="ts">
+	import Button from '$lib/components/Button.svelte';
+	import SkillBadge from '$lib/components/SkillBadge.svelte';
+	import DownloadIcon from 'phosphor-svelte/lib/DownloadIcon';
+	import EnvelopeIcon from 'phosphor-svelte/lib/EnvelopeIcon';
+	import { SKILLS_MAP } from '$lib/data/skills';
+
 	const cvHref = '/CV_Ducceschi_Nino.pdf';
 
-	const skills = [
+	const skillCategories = [
 		{
-			category: 'Développement Web',
-			items: [
-				{ name: 'SvelteKit', level: 'Avancé', projects: ['Portfolio', 'Projet E-commerce'] },
-				{ name: 'TypeScript', level: 'Intermédiaire', projects: ['Portfolio'] },
-				{ name: 'HTML / CSS', level: 'Avancé', projects: ['Portfolio', 'Site vitrine'] },
-				{ name: 'JavaScript', level: 'Avancé', projects: ['Application interactive'] }
+			category: 'Développement Frontend',
+			skills: [
+				SKILLS_MAP.sveltekit,
+				SKILLS_MAP.svelte,
+				SKILLS_MAP.typescript,
+				SKILLS_MAP.javascript,
+				SKILLS_MAP.html,
+				SKILLS_MAP.css,
+				SKILLS_MAP.tailwind
 			]
 		},
 		{
-			category: 'Outils & Méthodes',
-			items: [
-				{ name: 'Git / GitHub', level: 'Intermédiaire', projects: ['Tous projets'] },
-				{ name: 'Accessibilité Web', level: 'Intermédiaire', projects: ['Portfolio'] },
-				{ name: 'Design responsive', level: 'Avancé', projects: ['Portfolio', 'Site vitrine'] }
-			]
-		},
-		{
-			category: 'Soft Skills',
-			items: [
-				{ name: 'Travail en équipe', level: 'Confirmé', projects: ['Projets groupe'] },
-				{ name: 'Communication', level: 'Confirmé', projects: ['Présentations'] },
-				{ name: 'Résolution de problèmes', level: 'Avancé', projects: ['Débugging'] }
-			]
+			category: 'Outils & Technologies',
+			skills: [SKILLS_MAP.vite, SKILLS_MAP.git, SKILLS_MAP.phosphor, SKILLS_MAP.node]
 		}
 	];
 </script>
@@ -62,56 +59,28 @@
 					Expérience en développement front-end avec les technologies modernes.
 				</p>
 				<div class="header-actions">
-					<a class="btn-accent" href={cvHref} download>
+					<Button href={cvHref} variant="primary" icon={DownloadIcon} download>
 						Télécharger mon CV
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="18"
-							height="18"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							aria-hidden="true"
-						>
-							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-							<polyline points="7 10 12 15 17 10" />
-							<line x1="12" y1="15" x2="12" y2="3" />
-						</svg>
-					</a>
-					<a class="btn-secondary" href="/contact">Me contacter</a>
+					</Button>
+					<Button href="/contact" variant="secondary" icon={EnvelopeIcon}>Me contacter</Button>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section class="skills-section">
-		<h2>Compétences techniques et transversales</h2>
+		<h2>Compétences techniques</h2>
 		<p class="section-intro">
-			Voici un aperçu de mes compétences acquises et développées au fil de mes projets et
-			expériences.
+			Technologies et outils que j'utilise régulièrement dans mes projets de développement web.
 		</p>
 
 		<div class="skills-grid">
-			{#each skills as skillCategory}
+			{#each skillCategories as category}
 				<div class="skill-category">
-					<h3>{skillCategory.category}</h3>
+					<h3>{category.category}</h3>
 					<div class="skills-list">
-						{#each skillCategory.items as skill}
-							<div class="skill-item">
-								<div class="skill-header">
-									<span class="skill-name">{skill.name}</span>
-									<span class="skill-level">{skill.level}</span>
-								</div>
-								<div class="skill-projects">
-									<span class="projects-label">Appliqué dans :</span>
-									{#each skill.projects as project, i}
-										<a href="/projects" class="project-link">{project}</a
-										>{#if i < skill.projects.length - 1},
-										{/if}
-									{/each}
-								</div>
-							</div>
+						{#each category.skills as skill}
+							<SkillBadge {skill} size="md" />
 						{/each}
 					</div>
 				</div>
@@ -191,32 +160,6 @@
 		flex-wrap: wrap;
 	}
 
-	.btn-accent {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.btn-secondary {
-		display: inline-flex;
-		align-items: center;
-		padding: 0.75rem 1.5rem;
-		border: 2px solid hsl(var(--accent-500));
-		color: hsl(var(--accent-600));
-		border-radius: 10px;
-		text-decoration: none;
-		font-weight: 600;
-		font-size: 0.95rem;
-		transition: all 0.3s ease;
-		touch-action: manipulation;
-	}
-
-	.btn-secondary:hover {
-		background: hsl(var(--accent-500));
-		color: hsl(var(--background-50));
-		transform: translateY(-1px);
-	}
-
 	.skills-section {
 		margin-bottom: 5rem;
 	}
@@ -253,57 +196,8 @@
 
 	.skills-list {
 		display: flex;
-		flex-direction: column;
-		gap: 1.25rem;
-	}
-
-	.skill-item {
-		padding-bottom: 1.25rem;
-		border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-	}
-
-	.skill-item:last-child {
-		border-bottom: none;
-		padding-bottom: 0;
-	}
-
-	.skill-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 0.5rem;
-	}
-
-	.skill-name {
-		font-weight: 600;
-		color: hsl(var(--text-900));
-	}
-
-	.skill-level {
-		font-size: 0.875rem;
-		color: hsl(var(--accent-600));
-		background: hsl(var(--accent-50));
-		padding: 0.25rem 0.75rem;
-		border-radius: 6px;
-		font-weight: 500;
-	}
-
-	.skill-projects {
-		font-size: 0.9rem;
-		color: hsl(var(--text-700));
-	}
-
-	.projects-label {
-		font-style: italic;
-	}
-
-	.project-link {
-		color: hsl(var(--accent-600));
-		text-decoration: none;
-	}
-
-	.project-link:hover {
-		text-decoration: underline;
+		flex-wrap: wrap;
+		gap: 0.75rem;
 	}
 
 	.experience-section h2 {

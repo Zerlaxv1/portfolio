@@ -4,7 +4,7 @@ import adapter from '@sveltejs/adapter-static';
 /** @type {import('@sveltejs/kit').Config} */
 // TODO: supprimer quand plus besoin
 const config = {
-	kit: { 
+	kit: {
 		adapter: adapter({
 			strict: false
 		}),

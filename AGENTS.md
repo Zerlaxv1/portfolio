@@ -27,11 +27,13 @@ After completing the code, ask the user if they want a playground link. Only cal
 **CRITICAL: Always use specific icon imports to avoid bundle bloat**
 
 ❌ BAD - Imports all 30+ MB of icons:
+
 ```ts
 import { SunIcon, MoonIcon } from 'phosphor-svelte';
 ```
 
 ✅ GOOD - Imports only needed icons (~5KB each):
+
 ```ts
 import SunIcon from 'phosphor-svelte/lib/SunIcon';
 import MoonIcon from 'phosphor-svelte/lib/MoonIcon';

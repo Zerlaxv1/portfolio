@@ -1,155 +1,171 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap');
 
 :root {
-  --bg: var(--background-50);
-  --text: var(--text-900);
-  --muted: var(--text-500);
-  --accent: var(--accent-500);
+	--bg: var(--background-50);
+	--text: var(--text-900);
+	--muted: var(--text-500);
+	--accent: var(--accent-500);
 }
 
 body {
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(255, 229, 248, 0.4) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(229, 235, 255, 0.4) 0%, transparent 50%),
-    linear-gradient(180deg, hsl(var(--background-50)), hsl(var(--background-100)));
-  background-attachment: fixed;
-  color: hsl(var(--text-900));
-  font-family: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  line-height: 1.7;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+	background:
+		radial-gradient(circle at 20% 20%, rgba(255, 229, 248, 0.4) 0%, transparent 50%),
+		radial-gradient(circle at 80% 80%, rgba(229, 235, 255, 0.4) 0%, transparent 50%),
+		linear-gradient(180deg, hsl(var(--background-50)), hsl(var(--background-100)));
+	background-attachment: fixed;
+	color: hsl(var(--text-900));
+	font-family:
+		'Instrument Sans',
+		ui-sans-serif,
+		system-ui,
+		-apple-system,
+		'Segoe UI',
+		sans-serif;
+	line-height: 1.7;
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
 }
 
 body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,.02) 1px, rgba(0,0,0,.02) 2px);
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.4;
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 1px,
+		rgba(0, 0, 0, 0.02) 1px,
+		rgba(0, 0, 0, 0.02) 2px
+	);
+	pointer-events: none;
+	z-index: 1;
+	opacity: 0.4;
 }
 
 main {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
+	position: relative;
+	z-index: 2;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 3rem 1.5rem;
 }
 
 .btn-accent {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: hsl(var(--accent-600));
-  color: hsl(var(--background-50));
-  padding: 0.75rem 1.5rem;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  touch-action: manipulation;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: hsl(var(--accent-600));
+	color: hsl(var(--background-50));
+	padding: 0.75rem 1.5rem;
+	border-radius: 10px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 0.95rem;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	touch-action: manipulation;
 }
 
 .btn-accent:hover {
-  background: hsl(var(--accent-700));
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  transform: translateY(-1px);
+	background: hsl(var(--accent-700));
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+	transform: translateY(-1px);
 }
 
 .btn-accent:active {
-  transform: translateY(0);
+	transform: translateY(0);
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Outfit', 'Instrument Sans', sans-serif;
-  color: hsl(var(--primary-700));
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Outfit', 'Instrument Sans', sans-serif;
+	color: hsl(var(--primary-700));
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 1rem;
+	font-size: clamp(2rem, 5vw, 3.5rem);
+	margin-bottom: 1rem;
 }
 
 h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin: 2.5rem 0 1rem;
+	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	margin: 2.5rem 0 1rem;
 }
 
 h3 {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  margin: 2rem 0 0.75rem;
+	font-size: clamp(1.25rem, 3vw, 1.75rem);
+	margin: 2rem 0 0.75rem;
 }
 
 p {
-  max-width: 70ch;
-  margin-bottom: 1.25rem;
-  color: hsl(var(--text-800));
+	max-width: 70ch;
+	margin-bottom: 1.25rem;
+	color: hsl(var(--text-800));
 }
 
 a {
-  color: hsl(var(--accent-600));
-  text-decoration: none;
-  transition: color 0.2s ease;
+	color: hsl(var(--accent-600));
+	text-decoration: none;
+	transition: color 0.2s ease;
 }
 
 a:hover {
-  color: hsl(var(--accent-700));
+	color: hsl(var(--accent-700));
 }
 
 /* Focus visible for keyboard users */
-a:focus-visible, 
-button:focus-visible, 
-input:focus-visible, 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid hsl(var(--accent-500));
-  outline-offset: 3px;
-  border-radius: 4px;
+	outline: 3px solid hsl(var(--accent-500));
+	outline-offset: 3px;
+	border-radius: 4px;
 }
 
 /* Skip link visible on focus */
 .skip-link:focus {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  width: auto;
-  height: auto;
-  background: hsl(var(--accent-600));
-  color: hsl(var(--background-50));
-  padding: 1rem 1.5rem;
-  z-index: 9999;
-  border-radius: 8px;
-  font-weight: 600;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	width: auto;
+	height: auto;
+	background: hsl(var(--accent-600));
+	color: hsl(var(--background-50));
+	padding: 1rem 1.5rem;
+	z-index: 9999;
+	border-radius: 8px;
+	font-weight: 600;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }
 
 /* Touch targets */
 button,
 a {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
 }

@@ -2,6 +2,7 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import ArrowLeftIcon from '~icons/ph/arrow-left';
+	import { resolve } from '$app/paths';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
@@ -16,7 +17,7 @@
 
 <div class="skill-projects-page">
 	<div class="page-header">
-		<Button href="/competences" variant="secondary" icon={ArrowLeftIcon} iconPosition="left">
+		<Button href={resolve('/competences')} variant="secondary" icon={ArrowLeftIcon} iconPosition="left">
 			Retour aux compétences
 		</Button>
 
@@ -50,10 +51,10 @@
 			</div>
 		</section>
 	{:else}
-		<div class="empty-state">
-			<p>Aucun projet n'utilise encore cette compétence.</p>
-			<Button href="/projets" variant="primary">Voir tous les projets</Button>
-		</div>
+			<div class="empty-state">
+				<p>Aucun projet n'utilise encore cette compétence.</p>
+				<Button href={resolve('/projets')} variant="primary">Voir tous les projets</Button>
+			</div>
 	{/if}
 </div>
 

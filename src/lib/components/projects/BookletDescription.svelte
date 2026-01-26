@@ -5,9 +5,9 @@
 
 	<h3>Contexte</h3>
 	<p>
-		ce site web avait pour but de remplacer l'application exsitante qui est bassé sur 
-        <a href="https://en.wikipedia.org/wiki/ToolBook">ToolBook</a> 
-        qui n'est plus maintenu depuis 2012 et la personne chargé la maintenance de neuron n'était plus disponible.
+		ce site web avait pour but de remplacer l'application exsitante qui est bassé sur
+		<a href="https://en.wikipedia.org/wiki/ToolBook">ToolBook</a>
+		qui n'est plus maintenu depuis 2012 et la personne chargé la maintenance de neuron n'était plus disponible.
 	</p>
 
 	<h3>Défis techniques</h3>

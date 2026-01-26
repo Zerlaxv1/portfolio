@@ -36,7 +36,9 @@
 					<Button href={resolve('/projets')} variant="primary" icon={FolderIcon}>
 						Découvrir mes projets
 					</Button>
-					<Button href={resolve('/competences')} variant="secondary" icon={UserIcon}>Mes compétences</Button>
+					<Button href={resolve('/competences')} variant="secondary" icon={UserIcon}
+						>Mes compétences</Button
+					>
 				</div>
 			</div>
 			<div class="hero-image">
@@ -61,7 +63,7 @@
 					<div class="card-actions">
 						<a href={resolve(`/projets/${project.slug}`)} class="card-link">
 							Voir les détails
-						<ArrowRightIcon width="16" height="16" />
+							<ArrowRightIcon width="16" height="16" />
 						</a>
 					</div>
 				</article>

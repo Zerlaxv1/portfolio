@@ -13,8 +13,8 @@ export const load: PageLoad = ({ params }) => {
 	}
 
 	// Filtrer les projets qui utilisent cette compétence
-	const relatedProjects = projects.filter(
-		(project) => project.skills?.some((s) => s.id === params.slug)
+	const relatedProjects = projects.filter((project) =>
+		project.skills?.some((s) => s.id === params.slug)
 	);
 
 	return {

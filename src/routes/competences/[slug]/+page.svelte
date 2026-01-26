@@ -17,7 +17,12 @@
 
 <div class="skill-projects-page">
 	<div class="page-header">
-		<Button href={resolve('/competences')} variant="secondary" icon={ArrowLeftIcon} iconPosition="left">
+		<Button
+			href={resolve('/competences')}
+			variant="secondary"
+			icon={ArrowLeftIcon}
+			iconPosition="left"
+		>
 			Retour aux compétences
 		</Button>
 
@@ -51,10 +56,10 @@
 			</div>
 		</section>
 	{:else}
-			<div class="empty-state">
-				<p>Aucun projet n'utilise encore cette compétence.</p>
-				<Button href={resolve('/projets')} variant="primary">Voir tous les projets</Button>
-			</div>
+		<div class="empty-state">
+			<p>Aucun projet n'utilise encore cette compétence.</p>
+			<Button href={resolve('/projets')} variant="primary">Voir tous les projets</Button>
+		</div>
 	{/if}
 </div>
 

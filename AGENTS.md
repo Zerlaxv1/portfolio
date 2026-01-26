@@ -42,12 +42,13 @@ import MoonIcon from 'phosphor-svelte/lib/MoonIcon';
 Always use the pattern `phosphor-svelte/lib/{IconName}` for individual icon imports.
 
 <!-- skill-ninja-START -->
+
 ## Installed Skills
 
 The following skills are available in this workspace.
 
-| Skill | When to Use |
-|-------|-------------|
+| Skill                              | When to Use                                                                                                                                |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | [pdf](.github/skills/pdf/SKILL.md) | Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. |
 
 <!-- skill-ninja-END -->
@@ -55,20 +56,19 @@ The following skills are available in this workspace.
 ## Remarque sur les URLs et assets (build CI)
 
 - Pour que le build côté CI (GitHub Actions) et le prerender respectent `paths.base` et `paths.assets` configurés dans `svelte.config.js`, **construisez toujours** :
+  - les `href` avec `resolve()` (importer depuis `$app/paths`)
+  - les URLs vers les fichiers statiques avec `asset()` (importer depuis `$app/paths`)
 
-	- les `href` avec `resolve()` (importer depuis `$app/paths`)
-	- les URLs vers les fichiers statiques avec `asset()` (importer depuis `$app/paths`)
+  Exemple :
 
-	Exemple :
+  ```ts
+  import { resolve, asset } from '$app/paths';
 
-	```ts
-	import { resolve, asset } from '$app/paths';
+  // href vers une page de compétence (respecte paths.base)
+  const url = resolve(`/competences/${skill.id}`);
 
-	// href vers une page de compétence (respecte paths.base)
-	const url = resolve(`/competences/${skill.id}`);
+  // URL vers un fichier statique dans static/ (respecte paths.assets)
+  const cvUrl = asset(`/CV.pdf`);
+  ```
 
-	// URL vers un fichier statique dans static/ (respecte paths.assets)
-	const cvUrl = asset(`/CV.pdf`);
-	```
-
-	Sans ces helpers, le prerender peut générer des erreurs du type "does not begin with `base`" ou produire des liens statiques cassés en production.
+  Sans ces helpers, le prerender peut générer des erreurs du type "does not begin with `base`" ou produire des liens statiques cassés en production.

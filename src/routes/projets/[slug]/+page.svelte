@@ -135,7 +135,12 @@
 	{/if}
 
 	<div class="project-footer">
-		<Button href={resolve('/projets')} variant="secondary" icon={ArrowRightIcon} iconPosition="left">
+		<Button
+			href={resolve('/projets')}
+			variant="secondary"
+			icon={ArrowRightIcon}
+			iconPosition="left"
+		>
 			Retour aux projets
 		</Button>
 	</div>

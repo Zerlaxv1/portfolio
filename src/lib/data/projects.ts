@@ -1,5 +1,5 @@
 import type { Skill } from './skills';
-import { getSkill} from './skills';
+import { getSkill } from './skills';
 import type { Component } from 'svelte';
 import PortfolioModerneDescription from '$lib/components/projects/PortfolioModerneDescription.svelte';
 import BookletDescription from '$lib/components/projects/BookletDescription.svelte';
@@ -80,7 +80,7 @@ export const projects: Project[] = [
 			getSkill('drizzle'),
 			getSkill('postgres'),
 			getSkill('phosphor'),
-			getSkill('vite'),
+			getSkill('vite')
 		].filter((skill): skill is Skill => skill !== undefined),
 		startDate: new Date('2025-10-13'),
 		status: 'Terminé'

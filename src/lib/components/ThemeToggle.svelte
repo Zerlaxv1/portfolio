@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { theme } from '$lib/stores/theme';
-	import SunIcon from 'phosphor-svelte/lib/SunIcon';
-	import MoonIcon from 'phosphor-svelte/lib/MoonIcon';
+	import SunIcon from '~icons/ph/sun';
+	import MoonIcon from '~icons/ph/moon';
 
 	$: isDark = $theme === 'dark';
 </script>
@@ -13,9 +13,9 @@
 	title={isDark ? 'Mode clair' : 'Mode sombre'}
 >
 	{#if isDark}
-		<SunIcon size={20} weight="bold" />
+		<SunIcon width="20" height="20" />
 	{:else}
-		<MoonIcon size={20} weight="bold" />
+		<MoonIcon width="20" height="20" />
 	{/if}
 </button>
 

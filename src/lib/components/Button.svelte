@@ -16,13 +16,13 @@
 	{rel}
 >
 	{#if icon && iconPosition === 'left'}
-		<svelte:component this={icon} size={18} weight="bold" />
+		<svelte:component this={icon} width="18" height="18" />
 	{/if}
 
 	<slot />
 
 	{#if icon && iconPosition === 'right'}
-		<svelte:component this={icon} size={18} weight="bold" />
+		<svelte:component this={icon} width="18" height="18" />
 	{/if}
 </a>
 

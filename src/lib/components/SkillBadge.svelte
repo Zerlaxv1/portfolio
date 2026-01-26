@@ -22,7 +22,7 @@
 			class:size-lg={size === 'lg'}
 			class:clickable
 		>
-			<Icon size={iconSize} weight="bold" />
+			<Icon width={iconSize} height={iconSize} />
 			<span>{s.name}</span>
 		</a>
 	{:else}
@@ -32,7 +32,7 @@
 			class:size-md={size === 'md'}
 			class:size-lg={size === 'lg'}
 		>
-			<Icon size={iconSize} weight="bold" />
+			<Icon width={iconSize} height={iconSize} />
 			<span>{s.name}</span>
 		</span>
 	{/if}

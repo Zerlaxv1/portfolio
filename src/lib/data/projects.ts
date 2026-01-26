@@ -3,12 +3,12 @@ import { getSkill} from './skills';
 import type { Component } from 'svelte';
 import PortfolioModerneDescription from '$lib/components/projects/PortfolioModerneDescription.svelte';
 import BookletDescription from '$lib/components/projects/BookletDescription.svelte';
-import MoonIcon from 'phosphor-svelte/lib/Moon';
-import DeviceMobileIcon from 'phosphor-svelte/lib/DeviceMobile';
-import SparkleIcon from 'phosphor-svelte/lib/Sparkle';
-import RocketLaunchIcon from 'phosphor-svelte/lib/RocketLaunch';
-import EyeIcon from 'phosphor-svelte/lib/Eye';
-import CheckCircleIcon from 'phosphor-svelte/lib/CheckCircle';
+import MoonIcon from '~icons/ph/moon';
+import DeviceMobileIcon from '~icons/ph/device-mobile';
+import SparkleIcon from '~icons/ph/sparkle';
+import RocketLaunchIcon from '~icons/ph/rocket-launch';
+import EyeIcon from '~icons/ph/eye';
+import CheckCircleIcon from '~icons/ph/check-circle';
 
 export type ProjectFeature = {
 	text: string;
@@ -26,7 +26,8 @@ export type Project = {
 	skills?: Skill[];
 	features?: ProjectFeature[];
 	screenshots?: { url: string; caption: string }[];
-	date?: Date;
+	startDate?: Date;
+	endDate?: Date;
 	status?: 'En cours' | 'Terminé' | 'Archivé';
 };
 
@@ -58,7 +59,8 @@ export const projects: Project[] = [
 			{ url: '/images/portfolio-projects.jpg', caption: 'Grille de projets responsive' },
 			{ url: '/images/portfolio-dark.jpg', caption: 'Mode dark avec transitions douces' }
 		],
-		date: new Date('2026-01-26'),
+		startDate: new Date('2025-12-01'),
+		endDate: new Date('2026-01-26'),
 		status: 'Terminé'
 	},
 	{
@@ -80,7 +82,7 @@ export const projects: Project[] = [
 			getSkill('phosphor'),
 			getSkill('vite'),
 		].filter((skill): skill is Skill => skill !== undefined),
-		date: new Date('2025-10-13'),
+		startDate: new Date('2025-10-13'),
 		status: 'Terminé'
 	}
 ];

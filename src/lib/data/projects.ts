@@ -2,6 +2,7 @@ import type { Skill, getSkill } from './skills';
 import { getSkill as _getSkill } from './skills';
 import type { Component } from 'svelte';
 import PortfolioModerneDescription from '$lib/components/projects/PortfolioModerneDescription.svelte';
+import BookletDescription from '$lib/components/projects/BookletDescription.svelte';
 import MoonIcon from 'phosphor-svelte/lib/Moon';
 import DeviceMobileIcon from 'phosphor-svelte/lib/DeviceMobile';
 import SparkleIcon from 'phosphor-svelte/lib/Sparkle';
@@ -36,7 +37,7 @@ export const projects: Project[] = [
 		short: 'Site portfolio responsive avec SvelteKit et thème dark/light.',
 		description: PortfolioModerneDescription,
 		cover: '/images/portfolio-cover.jpg',
-		github: 'https://github.com/username/portfolio',
+		github: 'https://github.com/Zerlaxv1/portfolio',
 		demo: 'https://portfolio.example.com',
 		skills: [
 			_getSkill('sveltekit'),
@@ -59,6 +60,18 @@ export const projects: Project[] = [
 			{ url: '/images/portfolio-dark.jpg', caption: 'Mode dark avec transitions douces' }
 		],
 		date: new Date('2026-01-26'),
+		status: 'Terminé'
+	},
+	{
+		slug: 'booklet',
+		title: 'Booklet',
+		description: BookletDescription,
+		short: "Application d'apprentissage d'anglais ludique pour etudiants.",
+		cover: '/images/booklet-cover.png',
+		skills: [
+			_getSkill('sveltekit')
+		].filter((skill): skill is Skill => skill !== undefined),
+		date: new Date('2025-10-13'),
 		status: 'Terminé'
 	}
 ];

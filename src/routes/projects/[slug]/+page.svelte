@@ -2,8 +2,9 @@
 	import Button from '$lib/components/Button.svelte';
 	import SkillBadge from '$lib/components/SkillBadge.svelte';
 	import ArrowRightIcon from 'phosphor-svelte/lib/ArrowRightIcon';
-	import GithubLogoIcon from 'phosphor-svelte/lib/GithubLogo';
-	import GlobeIcon from 'phosphor-svelte/lib/Globe';
+	import GithubLogoIcon from 'phosphor-svelte/lib/GithubLogoIcon';
+	import GlobeIcon from 'phosphor-svelte/lib/GlobeIcon';
+	import CalendarIcon from 'phosphor-svelte/lib/CalendarIcon';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
@@ -31,7 +32,7 @@
 
 		<div class="project-meta">
 			{#if formattedDate}
-				<span class="meta-item">📅 {formattedDate}</span>
+				<span class="meta-item"><CalendarIcon size={16} weight="bold" class="meta-icon" /> {formattedDate}</span>
 			{/if}
 			{#if project.status}
 				<span class="meta-item status" class:status-complete={project.status === 'Terminé'}>
@@ -84,9 +85,10 @@
 	{/if}
 
 	{#if project.description}
+		{@const Description = project.description}
 		<section class="project-section project-description">
 			<h2>À propos du projet</h2>
-			{@render project.description()}
+			<Description />
 		</section>
 	{/if}
 
@@ -95,8 +97,9 @@
 			<h2>Fonctionnalités principales</h2>
 			<ul class="features-list">
 				{#each project.features as feature}
+					{@const Icon = feature.icon}
 					<li>
-						{@render feature.icon({ size: 18, weight: 'bold', class: 'feature-icon' })}
+						<Icon size={18} weight="bold" class="feature-icon" />
 						{feature.text}
 					</li>
 				{/each}
@@ -206,10 +209,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.75rem;
-	}
-
-	.project-description {
-		/* Les styles sont dans le composant description */
 	}
 
 	.features-list {

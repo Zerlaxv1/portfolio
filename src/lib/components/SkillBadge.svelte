@@ -4,15 +4,19 @@
 	let { skill, size = 'md' }: { skill: Skill; size?: 'sm' | 'md' | 'lg' } = $props();
 </script>
 
-<span
-	class="skill-badge"
-	class:size-sm={size === 'sm'}
-	class:size-md={size === 'md'}
-	class:size-lg={size === 'lg'}
->
-	{@render skill.icon({ size: size === 'sm' ? 14 : size === 'lg' ? 20 : 16, weight: 'bold' })}
-	<span>{skill.name}</span>
-</span>
+{#each [skill] as s}
+	{@const Icon = s.icon}
+	{@const iconSize = size === 'sm' ? 14 : size === 'lg' ? 20 : 16}
+	<span
+		class="skill-badge"
+		class:size-sm={size === 'sm'}
+		class:size-md={size === 'md'}
+		class:size-lg={size === 'lg'}
+	>
+		<Icon size={iconSize} weight="bold" />
+		<span>{s.name}</span>
+	</span>
+{/each}
 
 <style>
 	.skill-badge {

@@ -44,7 +44,7 @@ export const projects: Project[] = [
 			_getSkill('tailwind'),
 			_getSkill('vite'),
 			_getSkill('phosphor')
-		].filter(Boolean),
+		].filter((skill): skill is Skill => skill !== undefined),
 		features: [
 			{ text: 'Thème dark/light avec persistance', icon: MoonIcon },
 			{ text: 'Design responsive (mobile-first)', icon: DeviceMobileIcon },

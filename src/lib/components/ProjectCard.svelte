@@ -1,5 +1,7 @@
 <script lang="ts">
-  export let project: { slug: string; title: string; short: string; demo?: string; skills?: string[] };
+  import type { Project } from '$lib/data/projects';
+  
+  export let project: Project;
 </script>
 
 <article class="project-card">
@@ -12,7 +14,7 @@
   {#if project.skills && project.skills.length > 0}
     <div class="card-skills">
       {#each project.skills as skill}
-        <span class="skill-tag">{skill}</span>
+        <span class="skill-tag">{skill.name}</span>
       {/each}
     </div>
   {/if}

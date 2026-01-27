@@ -14,7 +14,7 @@ export const load: PageLoad = ({ params }) => {
 
 	// Filtrer les projets qui illustrent cette compétence
 	const relatedProjects = projects.filter((project) =>
-		project.pnCompetences?.some((c) => c.slug === params.slug)
+		project.pnCompetence?.slug === params.slug
 	);
 
 	return {

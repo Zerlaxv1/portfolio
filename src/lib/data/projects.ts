@@ -32,7 +32,7 @@ export type Project = {
 	github?: string;
 	demo?: string;
 	skills?: Skill[]; // Compétences techniques (TypeScript, Svelte, etc.)
-	pnCompetences?: PNCompetence[]; // Compétences du Programme National
+	pnCompetence?: PNCompetence; // Compétence principale du Programme National
 	features?: ProjectFeature[];
 	screenshots?: { url: string; caption: string }[];
 	startDate?: Date;
@@ -40,7 +40,7 @@ export type Project = {
 	status?: 'En cours' | 'Terminé' | 'Archivé';
 };
 
-export const projects: Project[] = [
+const allProjects: Project[] = [
 	{
 		slug: 'portfolio-moderne',
 		title: 'Portfolio Moderne',
@@ -55,12 +55,7 @@ export const projects: Project[] = [
 			getSkill('vite'),
 			getSkill('phosphor')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetences: [
-			getPNCompetence('realiser'),
-			getPNCompetence('optimiser'),
-			getPNCompetence('administrer'),
-			getPNCompetence('conduire')
-		].filter((comp): comp is PNCompetence => comp !== undefined),
+		pnCompetence: getPNCompetence('realiser'),
 		features: [
 			{ text: 'Thème dark/light avec persistance', icon: MoonIcon },
 			{ text: 'Design responsive (mobile-first)', icon: DeviceMobileIcon },
@@ -97,13 +92,8 @@ export const projects: Project[] = [
 			getSkill('phosphor'),
 			getSkill('vite')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetences: [
-			getPNCompetence('realiser'),
-			getPNCompetence('gerer'),
-			getPNCompetence('collaborer'),
-			getPNCompetence('conduire')
-		].filter((comp): comp is PNCompetence => comp !== undefined),
-		startDate: new Date('2025-10-13'),
+		pnCompetence: getPNCompetence('realiser'),
+		endDate: new Date('2025-10-13'),
 		status: 'Terminé'
 	},
 	{
@@ -117,12 +107,7 @@ export const projects: Project[] = [
 			getSkill('sqlite'),
 			getSkill('junit')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetences: [
-			getPNCompetence('realiser'),
-			getPNCompetence('gerer'),
-			getPNCompetence('collaborer')
-		].filter((comp): comp is PNCompetence => comp !== undefined),
-		startDate: new Date('2024-09-01'),
+		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2024-12-20'),
 		status: 'Terminé'
 	},
@@ -138,12 +123,7 @@ export const projects: Project[] = [
 			getSkill('html'),
 			getSkill('css')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetences: [
-			getPNCompetence('realiser'),
-			getPNCompetence('gerer'),
-			getPNCompetence('conduire')
-		].filter((comp): comp is PNCompetence => comp !== undefined),
-		startDate: new Date('2024-02-01'),
+		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2024-05-30'),
 		status: 'Terminé'
 	},
@@ -156,12 +136,7 @@ export const projects: Project[] = [
 			getSkill('dart'),
 			getSkill('flutter')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetences: [
-			getPNCompetence('realiser'),
-			getPNCompetence('conduire'),
-			getPNCompetence('collaborer')
-		].filter((comp): comp is PNCompetence => comp !== undefined),
-		startDate: new Date('2025-03-01'),
+		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2025-06-15'),
 		status: 'Terminé'
 	},
@@ -177,12 +152,7 @@ export const projects: Project[] = [
 			getSkill('html'),
 			getSkill('css')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetences: [
-			getPNCompetence('realiser'),
-			getPNCompetence('gerer'),
-			getPNCompetence('administrer'),
-			getPNCompetence('conduire')
-		].filter((comp): comp is PNCompetence => comp !== undefined),
+		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2025-03-25'),
 		status: 'Terminé'
 	},
@@ -194,11 +164,7 @@ export const projects: Project[] = [
 		skills: [
 			getSkill('c')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetences: [
-			getPNCompetence('realiser'),
-			getPNCompetence('administrer'),
-			getPNCompetence('conduire')
-		].filter((comp): comp is PNCompetence => comp !== undefined),
+		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2025-01-16'),
 		status: 'Terminé'
 	},
@@ -210,11 +176,15 @@ export const projects: Project[] = [
 		skills: [
 			getSkill('c')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetences: [
-			getPNCompetence('realiser'),
-			getPNCompetence('optimiser')
-		].filter((comp): comp is PNCompetence => comp !== undefined),
+		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2024-05-26'),
 		status: 'Terminé'
 	}
 ];
+
+// Trier les projets par date de fin (plus récent en premier)
+export const projects = allProjects.sort((a, b) => {
+	const dateA = a.endDate?.getTime() ?? 0;
+	const dateB = b.endDate?.getTime() ?? 0;
+	return dateB - dateA;
+});

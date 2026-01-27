@@ -13,18 +13,13 @@
 
 	<p class="card-description">{project.short}</p>
 
-	{#if project.pnCompetences && project.pnCompetences.length > 0}
-		<div class="card-competences">
-			<span class="competences-label">Compétences :</span>
-			<div class="competences-list">
-				{#each project.pnCompetences as competence}
-					{@const Icon = competence.icon}
-					<a href={resolve(`/competences/${competence.slug}`)} class="competence-badge">
-						<Icon width="14" height="14" />
-						<span>{competence.shortTitle}</span>
-					</a>
-				{/each}
-			</div>
+	{#if project.pnCompetence}
+		{@const Icon = project.pnCompetence.icon}
+		<div class="card-competence-banner">
+			<a href={resolve(`/competences/${project.pnCompetence.slug}`)} class="competence-banner">
+				<Icon width="20" height="20" />
+				<span>{project.pnCompetence.title}</span>
+			</a>
 		</div>
 	{/if}
 
@@ -104,48 +99,33 @@
 		flex-grow: 1;
 	}
 
-	.card-competences {
-		margin-bottom: 1rem;
-		padding-bottom: 1rem;
+	.card-competence-banner {
+		margin-bottom: 1.5rem;
+		padding-bottom: 1.5rem;
 		border-bottom: 1px solid hsl(var(--text-950) / 0.06);
 	}
 
-	.competences-label {
-		display: block;
-		font-size: 0.8rem;
-		font-weight: 600;
-		color: hsl(var(--text-600));
-		margin-bottom: 0.5rem;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-
-	.competences-list {
+	.competence-banner {
 		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-
-	.competence-badge {
-		display: inline-flex;
 		align-items: center;
-		gap: 0.375rem;
-		padding: 0.375rem 0.75rem;
-		background: hsl(var(--primary-50));
+		gap: 0.75rem;
+		padding: 0.875rem 1.25rem;
+		background: linear-gradient(135deg, hsl(var(--primary-50)) 0%, hsl(var(--primary-100)) 100%);
 		color: hsl(var(--primary-700));
-		border-radius: 9999px;
-		font-size: 0.75rem;
-		font-weight: 600;
+		border-radius: 12px;
+		font-size: 0.95rem;
+		font-weight: 700;
 		text-decoration: none;
-		transition: all 0.2s ease;
-		border: 1px solid hsl(var(--primary-200));
+		transition: all 0.3s ease;
+		border: 2px solid hsl(var(--primary-200));
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 	}
 
-	.competence-badge:hover {
-		background: hsl(var(--primary-100));
-		border-color: hsl(var(--primary-300));
+	.competence-banner:hover {
+		background: linear-gradient(135deg, hsl(var(--primary-100)) 0%, hsl(var(--primary-200)) 100%);
+		border-color: hsl(var(--primary-400));
 		transform: translateY(-2px);
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 	}
 
 	.card-skills {
@@ -185,12 +165,12 @@
 	@media (prefers-reduced-motion: reduce) {
 		.project-card,
 		.link-details,
-		.competence-badge {
+		.competence-banner {
 			transition: none;
 		}
 
 		.project-card:hover,
-		.competence-badge:hover {
+		.competence-banner:hover {
 			transform: none;
 		}
 	}

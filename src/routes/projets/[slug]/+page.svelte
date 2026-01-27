@@ -12,21 +12,14 @@
 	const project = $derived(data.project);
 
 	const formattedDate = $derived(() => {
-		if (!project.startDate) return null;
+		if (!project.endDate) return null;
 
 		const formatter = new Intl.DateTimeFormat('fr-FR', {
 			year: 'numeric',
 			month: 'long'
 		});
 
-		const start = formatter.format(project.startDate);
-
-		if (!project.endDate) {
-			return `Depuis ${start}`;
-		}
-
-		const end = formatter.format(project.endDate);
-		return `${start} — ${end}`;
+		return formatter.format(project.endDate);
 	});
 </script>
 
@@ -39,6 +32,19 @@
 	<div class="project-header">
 		<h1>{project.title}</h1>
 		<p class="project-tagline">{project.short}</p>
+
+		{#if project.pnCompetence}
+			{@const Icon = project.pnCompetence.icon}
+			<div class="competence-banner-wrapper">
+				<a href={resolve(`/competences/${project.pnCompetence.slug}`)} class="competence-banner">
+					<Icon width="24" height="24" />
+					<div class="competence-content">
+						<span class="competence-label">Compétence principale</span>
+						<span class="competence-title">{project.pnCompetence.title}</span>
+					</div>
+				</a>
+			</div>
+		{/if}
 
 		<div class="project-meta">
 			{#if formattedDate}
@@ -165,7 +171,56 @@
 	.project-tagline {
 		font-size: 1.25rem;
 		color: hsl(var(--text-700));
-		margin-bottom: 1.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.competence-banner-wrapper {
+		margin-bottom: 2rem;
+	}
+
+	.competence-banner {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 1.25rem 1.5rem;
+		background: linear-gradient(135deg, hsl(var(--primary-50)) 0%, hsl(var(--primary-100)) 100%);
+		border: 2px solid hsl(var(--primary-200));
+		border-radius: 16px;
+		text-decoration: none;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+	}
+
+	.competence-banner:hover {
+		background: linear-gradient(135deg, hsl(var(--primary-100)) 0%, hsl(var(--primary-200)) 100%);
+		border-color: hsl(var(--primary-400));
+		transform: translateY(-2px);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	.competence-banner :global(svg) {
+		color: hsl(var(--primary-600));
+		flex-shrink: 0;
+	}
+
+	.competence-content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.competence-label {
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: hsl(var(--primary-600));
+	}
+
+	.competence-title {
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: hsl(var(--primary-700));
 	}
 
 	.project-meta {

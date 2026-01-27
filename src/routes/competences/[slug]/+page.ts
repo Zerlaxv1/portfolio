@@ -1,28 +1,28 @@
 import { projects } from '$lib/data/projects';
-import { SKILLS_MAP } from '$lib/data/skills';
+import { pnCompetences } from '$lib/data/pn-competences';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
 export const prerender = true;
 
 export const load: PageLoad = ({ params }) => {
-	const skill = SKILLS_MAP[params.slug];
+	const competence = pnCompetences.find((c) => c.slug === params.slug);
 
-	if (!skill) {
+	if (!competence) {
 		error(404, 'Compétence non trouvée');
 	}
 
-	// Filtrer les projets qui utilisent cette compétence
+	// Filtrer les projets qui illustrent cette compétence
 	const relatedProjects = projects.filter((project) =>
-		project.skills?.some((s) => s.id === params.slug)
+		project.pnCompetences?.some((c) => c.slug === params.slug)
 	);
 
 	return {
-		skill,
+		competence,
 		projects: relatedProjects
 	};
 };
 
 export function entries() {
-	return Object.keys(SKILLS_MAP).map((slug) => ({ slug }));
+	return pnCompetences.map((c) => ({ slug: c.slug }));
 }

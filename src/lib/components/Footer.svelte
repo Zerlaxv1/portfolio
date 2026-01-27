@@ -42,7 +42,6 @@
 
 <style>
 	.site-footer {
-		margin-top: 6rem;
 		padding: 3rem 1.5rem 2rem;
 		border-top: 1px solid rgba(0, 0, 0, 0.08);
 		background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.02));

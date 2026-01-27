@@ -8,13 +8,12 @@
 
 <article class="project-card" style:--comp-color={project.pnCompetence?.color}>
 	{#if project.pnCompetence}
-		{@const Icon = project.pnCompetence.icon}
-		<div class="card-competence-banner">
-			<a href={resolve(`/competences/${project.pnCompetence.slug}`)} class="competence-banner">
-				<Icon width="20" height="20" />
-				<span>{project.pnCompetence.title}</span>
-			</a>
-		</div>
+		<a
+			href={resolve(`/competences/${project.pnCompetence.slug}`)}
+			class="card-competence-banner"
+		>
+			{project.pnCompetence.title}
+		</a>
 	{/if}
 
 	<div class="card-header">
@@ -100,33 +99,22 @@
 	}
 
 	.card-competence-banner {
+		display: block;
 		margin: -2rem -2rem 1.5rem -2rem;
-		padding: 1rem 2rem;
-		background: linear-gradient(135deg, hsl(var(--comp-color) / 0.15) 0%, hsl(var(--comp-color) / 0.05) 100%);
-		border-bottom: 2px solid hsl(var(--comp-color) / 0.3);
+		padding: 0.5rem 1rem;
+		background: hsl(var(--comp-color));
+		color: white;
+		text-align: center;
+		font-size: 0.8rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: all 0.2s ease;
 		border-radius: 12px 12px 0 0;
 	}
 
-	.competence-banner {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		padding: 0.75rem 1rem;
-		background: hsl(var(--comp-color) / 0.1);
-		color: hsl(var(--comp-color));
-		border-radius: 8px;
-		font-size: 0.9rem;
-		font-weight: 700;
-		text-decoration: none;
-		transition: all 0.3s ease;
-		border: 2px solid hsl(var(--comp-color) / 0.3);
-	}
-
-	.competence-banner:hover {
-		background: hsl(var(--comp-color) / 0.2);
-		border-color: hsl(var(--comp-color) / 0.5);
-		transform: scale(1.02);
-		box-shadow: 0 4px 12px hsl(var(--comp-color) / 0.25);
+	.card-competence-banner:hover {
+		background: hsl(var(--comp-color) / 0.9);
+		text-decoration: underline;
 	}
 
 	.card-skills {
@@ -166,12 +154,11 @@
 	@media (prefers-reduced-motion: reduce) {
 		.project-card,
 		.link-details,
-		.competence-banner {
+		.card-competence-banner {
 			transition: none;
 		}
 
-		.project-card:hover,
-		.competence-banner:hover {
+		.project-card:hover {
 			transform: none;
 		}
 	}

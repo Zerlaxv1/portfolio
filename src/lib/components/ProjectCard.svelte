@@ -2,6 +2,8 @@
 	import type { Project } from '$lib/data/projects';
 	import { resolve } from '$app/paths';
 	import SkillBadge from './SkillBadge.svelte';
+	import Button from './Button.svelte';
+	import ArrowSquareOutIcon from '~icons/ph/arrow-square-out';
 
 	export let project: Project;
 </script>
@@ -32,23 +34,15 @@
 
 	<div class="card-actions">
 		{#if project.demo}
-			<a class="btn-accent" href={project.demo} target="_blank" rel="noopener noreferrer">
+			<Button
+				href={project.demo}
+				variant="primary"
+				icon={ArrowSquareOutIcon}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
 				Voir la démo
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="16"
-					height="16"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					aria-hidden="true"
-				>
-					<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-					<path d="M15 3h6v6" />
-					<path d="M10 14L21 3" />
-				</svg>
-			</a>
+			</Button>
 		{/if}
 		<a href={resolve(`/projets/${project.slug}`)} class="link-details">
 			Détails du projet
@@ -143,12 +137,6 @@
 
 	.link-details:hover {
 		gap: 0.75rem;
-	}
-
-	.btn-accent {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
 	}
 
 	@media (prefers-reduced-motion: reduce) {

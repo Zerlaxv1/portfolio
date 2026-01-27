@@ -4,6 +4,7 @@
 	import { projects } from '$lib/data/projects';
 	import { page } from '$app/stores';
 	import type { Skill } from '$lib/data/skills';
+	import { browser } from '$app/environment';
 
 	// Récupérer toutes les compétences uniques
 	const allSkills: Skill[] = [];
@@ -21,8 +22,8 @@
 	// Trier les compétences par ordre alphabétique
 	allSkills.sort((a, b) => a.name.localeCompare(b.name));
 
-	// Filtre actuel depuis l'URL
-	let selectedSkillId = $derived($page.url.searchParams.get('skill'));
+	// Filtre actuel depuis l'URL (uniquement côté client)
+	let selectedSkillId = $derived(browser ? $page.url.searchParams.get('skill') : null);
 
 	// Projets filtrés
 	let filteredProjects = $derived(

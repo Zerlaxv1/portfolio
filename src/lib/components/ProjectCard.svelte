@@ -102,8 +102,8 @@
 		display: block;
 		margin: -2rem -2rem 1.5rem -2rem;
 		padding: 0.5rem 1rem;
-		background: hsl(var(--comp-color));
-		color: white;
+		background: hsl(var(--comp-color) / 0.12);
+		color: hsl(var(--comp-color));
 		text-align: center;
 		font-size: 0.8rem;
 		font-weight: 600;
@@ -113,7 +113,7 @@
 	}
 
 	.card-competence-banner:hover {
-		background: hsl(var(--comp-color) / 0.9);
+		background: hsl(var(--comp-color) / 0.2);
 		text-decoration: underline;
 	}
 

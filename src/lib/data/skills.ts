@@ -70,9 +70,57 @@ export const SKILLS_MAP: Record<string, Skill> = {
 		icon: CodeIcon,
 		category: 'backend'
 	},
+	java: {
+		id: 'java',
+		name: 'Java',
+		icon: CodeIcon,
+		category: 'backend'
+	},
+	php: {
+		id: 'php',
+		name: 'PHP',
+		icon: CodeIcon,
+		category: 'backend'
+	},
+	dart: {
+		id: 'dart',
+		name: 'Dart',
+		icon: CodeIcon,
+		category: 'backend'
+	},
+	c: {
+		id: 'c',
+		name: 'C',
+		icon: CodeIcon,
+		category: 'backend'
+	},
 	database: {
 		id: 'database',
 		name: 'Database',
+		icon: DatabaseIcon,
+		category: 'backend'
+	},
+	sqlite: {
+		id: 'sqlite',
+		name: 'SQLite',
+		icon: DatabaseIcon,
+		category: 'backend'
+	},
+	mysql: {
+		id: 'mysql',
+		name: 'MySQL',
+		icon: DatabaseIcon,
+		category: 'backend'
+	},
+	postgres: {
+		id: 'postgres',
+		name: 'PostgreSQL',
+		icon: DatabaseIcon,
+		category: 'backend'
+	},
+	drizzle: {
+		id: 'drizzle',
+		name: 'Drizzle ORM',
 		icon: DatabaseIcon,
 		category: 'backend'
 	},
@@ -95,6 +143,30 @@ export const SKILLS_MAP: Record<string, Skill> = {
 		name: 'Phosphor Icons',
 		icon: FramerLogoIcon,
 		category: 'tools'
+	},
+	swing: {
+		id: 'swing',
+		name: 'Swing',
+		icon: BracketsAngleIcon,
+		category: 'tools'
+	},
+	junit: {
+		id: 'junit',
+		name: 'JUnit 4',
+		icon: CodeIcon,
+		category: 'tools'
+	},
+	flutter: {
+		id: 'flutter',
+		name: 'Flutter',
+		icon: FramerLogoIcon,
+		category: 'tools'
+	},
+	frankenui: {
+		id: 'frankenui',
+		name: 'FrankenUI',
+		icon: PaintBrushIcon,
+		category: 'frontend'
 	}
 };
 

@@ -13,10 +13,25 @@
 
 	<p class="card-description">{project.short}</p>
 
+	{#if project.pnCompetences && project.pnCompetences.length > 0}
+		<div class="card-competences">
+			<span class="competences-label">Compétences :</span>
+			<div class="competences-list">
+				{#each project.pnCompetences as competence}
+					{@const Icon = competence.icon}
+					<a href={resolve(`/competences/${competence.slug}`)} class="competence-badge">
+						<Icon width="14" height="14" />
+						<span>{competence.shortTitle}</span>
+					</a>
+				{/each}
+			</div>
+		</div>
+	{/if}
+
 	{#if project.skills && project.skills.length > 0}
 		<div class="card-skills">
 			{#each project.skills as skill}
-				<SkillBadge {skill} size="sm" />
+				<SkillBadge {skill} size="sm" clickable={true} />
 			{/each}
 		</div>
 	{/if}
@@ -89,6 +104,50 @@
 		flex-grow: 1;
 	}
 
+	.card-competences {
+		margin-bottom: 1rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid hsl(var(--text-950) / 0.06);
+	}
+
+	.competences-label {
+		display: block;
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: hsl(var(--text-600));
+		margin-bottom: 0.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.competences-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.competence-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		padding: 0.375rem 0.75rem;
+		background: hsl(var(--primary-50));
+		color: hsl(var(--primary-700));
+		border-radius: 9999px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: all 0.2s ease;
+		border: 1px solid hsl(var(--primary-200));
+	}
+
+	.competence-badge:hover {
+		background: hsl(var(--primary-100));
+		border-color: hsl(var(--primary-300));
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
+
 	.card-skills {
 		display: flex;
 		flex-wrap: wrap;
@@ -125,11 +184,13 @@
 
 	@media (prefers-reduced-motion: reduce) {
 		.project-card,
-		.link-details {
+		.link-details,
+		.competence-badge {
 			transition: none;
 		}
 
-		.project-card:hover {
+		.project-card:hover,
+		.competence-badge:hover {
 			transform: none;
 		}
 	}

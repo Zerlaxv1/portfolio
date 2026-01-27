@@ -1,14 +1,14 @@
 <script lang="ts">
 	import type { Skill } from '$lib/data/skills';
-	import { resolve } from '$app/paths';
 
 	let {
 		skill,
 		size = 'md',
-		clickable = false
-	}: { skill: Skill; size?: 'sm' | 'md' | 'lg'; clickable?: boolean } = $props();
+		clickable = false,
+		active = false
+	}: { skill: Skill; size?: 'sm' | 'md' | 'lg'; clickable?: boolean; active?: boolean } = $props();
 
-	const href = $derived(clickable ? resolve(`/competences/${skill.id}`) : undefined);
+	const href = $derived(clickable ? `/projets?skill=${skill.id}` : undefined);
 </script>
 
 {#each [skill] as s}
@@ -22,6 +22,7 @@
 			class:size-md={size === 'md'}
 			class:size-lg={size === 'lg'}
 			class:clickable
+			class:active
 		>
 			<Icon width={iconSize} height={iconSize} />
 			<span>{s.name}</span>
@@ -32,6 +33,7 @@
 			class:size-sm={size === 'sm'}
 			class:size-md={size === 'md'}
 			class:size-lg={size === 'lg'}
+			class:active
 		>
 			<Icon width={iconSize} height={iconSize} />
 			<span>{s.name}</span>
@@ -47,10 +49,11 @@
 		padding: 0.5rem 1rem;
 		background: hsl(var(--accent-50));
 		color: hsl(var(--accent-700));
-		border-radius: 8px;
+		border-radius: 9999px;
 		font-weight: 600;
 		transition: all 0.2s ease;
 		text-decoration: none;
+		border: 2px solid transparent;
 	}
 
 	.skill-badge:hover {
@@ -67,6 +70,17 @@
 		box-shadow: 0 4px 12px hsl(var(--accent-700) / 0.15);
 	}
 
+	.skill-badge.active {
+		background: hsl(var(--accent-600));
+		color: white;
+		border-color: hsl(var(--accent-700));
+	}
+
+	.skill-badge.active:hover {
+		background: hsl(var(--accent-700));
+		transform: translateY(-2px);
+	}
+
 	.size-sm {
 		padding: 0.375rem 0.75rem;
 		font-size: 0.85rem;
@@ -75,7 +89,7 @@
 
 	.size-md {
 		padding: 0.5rem 1rem;
-		font-size: 0.95rem;
+		font-size: 0.9rem;
 		gap: 0.5rem;
 	}
 

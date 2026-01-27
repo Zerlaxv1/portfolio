@@ -1,276 +1,221 @@
 <script lang="ts">
-	import { asset, resolve } from '$app/paths';
-	import Button from '$lib/components/Button.svelte';
-	import SkillBadge from '$lib/components/SkillBadge.svelte';
-	import DownloadIcon from '~icons/ph/download';
-	import EnvelopeIcon from '~icons/ph/envelope';
-	import { SKILLS_MAP } from '$lib/data/skills';
+	import { resolve } from '$app/paths';
+	import { pnCompetences } from '$lib/data/pn-competences';
+	import { projects } from '$lib/data/projects';
+	import { onMount } from 'svelte';
 
-	const cvHref = asset('/CV_Ducceschi_Nino.pdf');
+	let mounted = false;
 
-	const skillCategories = [
-		{
-			category: 'Développement Frontend',
-			skills: [
-				SKILLS_MAP.sveltekit,
-				SKILLS_MAP.svelte,
-				SKILLS_MAP.typescript,
-				SKILLS_MAP.javascript,
-				SKILLS_MAP.html,
-				SKILLS_MAP.css,
-				SKILLS_MAP.tailwind
-			]
-		},
-		{
-			category: 'Outils & Technologies',
-			skills: [SKILLS_MAP.vite, SKILLS_MAP.git, SKILLS_MAP.phosphor, SKILLS_MAP.node]
-		}
-	];
+	onMount(() => {
+		mounted = true;
+	});
+
+	// Compter les projets par compétence
+	function getProjectCount(compSlug: string) {
+		return projects.filter((p) => p.pnCompetences?.some((c) => c.slug === compSlug)).length;
+	}
 </script>
 
 <svelte:head>
 	<title>Compétences — Mon Portfolio</title>
 	<meta
 		name="description"
-		content="Découvrez mes compétences en développement web et mon parcours"
+		content="Découvrez mes compétences professionnelles en développement informatique"
 	/>
 </svelte:head>
 
-<div class="about-page">
-	<section class="about-header">
-		<div class="header-content">
-			<div class="profile-image">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="120"
-					height="120"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="1.5"
-				>
-					<circle cx="12" cy="8" r="5" />
-					<path d="M20 21a8 8 0 1 0-16 0" />
-				</svg>
-			</div>
-			<div class="header-text">
-				<h1>Compétences & Parcours</h1>
-				<p class="header-description">
-					Développeur web passionné par la création d'interfaces accessibles et performantes.
-					Expérience en développement front-end avec les technologies modernes.
-				</p>
-				<div class="header-actions">
-					<Button href={cvHref} variant="primary" icon={DownloadIcon}>Télécharger mon CV</Button>
-					<Button href={resolve('/contact')} variant="secondary" icon={EnvelopeIcon}
-						>Me contacter</Button
-					>
-				</div>
-			</div>
-		</div>
+<div class="competences-page" class:mounted>
+	<section class="hero-section">
+		<h1>Mes Compétences</h1>
+		<p class="hero-description">
+			Découvrez comment j'ai développé et appliqué mes compétences professionnelles à travers mes
+			différents projets et expériences.
+		</p>
 	</section>
 
-	<section class="skills-section">
-		<h2>Compétences techniques</h2>
-		<p class="section-intro">
-			Technologies et outils que j'utilise régulièrement dans mes projets de développement web.
-			<strong>Cliquez sur une compétence</strong> pour voir les projets associés.
-		</p>
-
-		<div class="skills-grid">
-			{#each skillCategories as category}
-				<div class="skill-category">
-					<h3>{category.category}</h3>
-					<div class="skills-list">
-						{#each category.skills as skill}
-							<SkillBadge {skill} size="md" clickable={true} />
-						{/each}
+	<section class="competences-grid">
+		{#each pnCompetences as competence, i}
+			{@const projectCount = getProjectCount(competence.slug)}
+			{@const Icon = competence.icon}
+			<a
+				href={resolve(`/competences/${competence.slug}`)}
+				class="competence-card"
+				style="--delay: {i * 0.1}s; --color: {competence.color}"
+			>
+				<div class="competence-icon">
+					<Icon width="32" height="32" />
+				</div>
+				<div class="competence-content">
+					<h2>{competence.shortTitle}</h2>
+					<p class="competence-description">{competence.description}</p>
+					<div class="competence-meta">
+						<span class="project-count">
+							{projectCount}
+							{projectCount > 1 ? 'projets' : 'projet'}
+						</span>
 					</div>
 				</div>
-			{/each}
-		</div>
-	</section>
-
-	<section class="experience-section">
-		<h2>Parcours</h2>
-		<div class="timeline">
-			<div class="timeline-item">
-				<div class="timeline-marker"></div>
-				<div class="timeline-content">
-					<h3>BUT Informatique</h3>
-					<p class="timeline-period">2022 — Présent</p>
-					<p>Formation en développement web, programmation et gestion de projets informatiques.</p>
-				</div>
-			</div>
-
-			<div class="timeline-item">
-				<div class="timeline-marker"></div>
-				<div class="timeline-content">
-					<h3>Projets personnels</h3>
-					<p class="timeline-period">2023 — Présent</p>
-					<p>
-						Développement de sites web et applications pour consolider mes compétences techniques.
-					</p>
-				</div>
-			</div>
-		</div>
+			</a>
+		{/each}
 	</section>
 </div>
 
 <style>
-	.about-page {
-		max-width: 1200px;
+	.competences-page {
+		opacity: 0;
+		transition: opacity 0.6s ease;
+	}
+
+	.competences-page.mounted {
+		opacity: 1;
+	}
+
+	.hero-section {
+		text-align: center;
+		padding: 3rem 0 4rem;
+		animation: fadeUp 0.8s ease backwards;
+	}
+
+	.hero-section h1 {
+		margin-bottom: 1rem;
+	}
+
+	.hero-description {
+		font-size: 1.25rem;
+		color: hsl(var(--text-700));
+		max-width: 800px;
 		margin: 0 auto;
 	}
 
-	.about-header {
-		margin-bottom: 5rem;
-	}
-
-	.header-content {
+	.competences-grid {
 		display: grid;
-		grid-template-columns: auto 1fr;
-		gap: 3rem;
-		align-items: center;
+		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+		gap: 2rem;
+		padding-bottom: 4rem;
 	}
 
-	.profile-image {
-		width: 180px;
-		height: 180px;
-		border-radius: 50%;
-		background: linear-gradient(135deg, hsl(var(--accent-100)), hsl(var(--primary-100)));
+	.competence-card {
+		display: flex;
+		gap: 1.5rem;
+		background: hsl(var(--background-100));
+		border: 2px solid hsl(var(--text-950) / 0.06);
+		border-radius: 16px;
+		padding: 2rem;
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.3s ease;
+		opacity: 0;
+		animation: fadeUp 0.6s ease forwards;
+		animation-delay: var(--delay);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.competence-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 4px;
+		height: 100%;
+		background: hsl(var(--color));
+		transform: scaleY(0);
+		transition: transform 0.3s ease;
+		transform-origin: top;
+	}
+
+	.competence-card:hover {
+		border-color: hsl(var(--color));
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+		transform: translateY(-4px);
+	}
+
+	.competence-card:hover::before {
+		transform: scaleY(1);
+	}
+
+	.competence-icon {
+		flex-shrink: 0;
+		width: 64px;
+		height: 64px;
+		border-radius: 12px;
+		background: hsl(var(--color) / 0.1);
+		color: hsl(var(--color));
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: hsl(var(--accent-600));
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+		transition: all 0.3s ease;
 	}
 
-	.header-text h1 {
-		margin-bottom: 1rem;
+	.competence-card:hover .competence-icon {
+		background: hsl(var(--color));
+		color: white;
+		transform: scale(1.1) rotate(5deg);
 	}
 
-	.header-description {
-		font-size: 1.125rem;
+	.competence-content {
+		flex: 1;
+	}
+
+	.competence-content h2 {
+		margin: 0 0 0.75rem;
+		font-size: 1.5rem;
+		color: hsl(var(--text-900));
+	}
+
+	.competence-description {
 		color: hsl(var(--text-700));
-		margin-bottom: 2rem;
-		line-height: 1.7;
+		margin-bottom: 1rem;
+		line-height: 1.6;
 	}
 
-	.header-actions {
+	.competence-meta {
 		display: flex;
+		align-items: center;
 		gap: 1rem;
-		flex-wrap: wrap;
 	}
 
-	.skills-section {
-		margin-bottom: 5rem;
-	}
-
-	.skills-section h2 {
-		margin-bottom: 1rem;
-	}
-
-	.section-intro {
-		color: hsl(var(--text-700));
-		font-size: 1.125rem;
-		margin-bottom: 3rem;
-	}
-
-	.skills-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-		gap: 2rem;
-	}
-
-	.skill-category {
-		background: hsl(var(--background-100));
-		border: 1px solid hsl(var(--text-950) / 0.08);
-		border-radius: 12px;
-		padding: 2rem;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-	}
-
-	.skill-category h3 {
-		margin: 0 0 1.5rem;
-		font-size: 1.375rem;
-		color: hsl(var(--primary-700));
-	}
-
-	.skills-list {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem;
-	}
-
-	.experience-section h2 {
-		margin-bottom: 2rem;
-	}
-
-	.timeline {
-		position: relative;
-		padding-left: 2.5rem;
-	}
-
-	.timeline::before {
-		content: '';
-		position: absolute;
-		left: 8px;
-		top: 12px;
-		bottom: 12px;
-		width: 2px;
-		background: linear-gradient(to bottom, hsl(var(--accent-300)), hsl(var(--primary-300)));
-	}
-
-	.timeline-item {
-		position: relative;
-		margin-bottom: 2.5rem;
-	}
-
-	.timeline-marker {
-		position: absolute;
-		left: -2.5rem;
-		top: 6px;
-		width: 18px;
-		height: 18px;
-		border-radius: 50%;
-		background: hsl(var(--accent-500));
-		border: 3px solid white;
-		box-shadow: 0 0 0 2px hsl(var(--accent-300));
-	}
-
-	.timeline-content h3 {
-		margin: 0 0 0.5rem;
-		font-size: 1.25rem;
-	}
-
-	.timeline-period {
-		color: hsl(var(--accent-600));
+	.project-count {
+		font-size: 0.875rem;
 		font-weight: 600;
-		margin-bottom: 0.75rem;
+		color: hsl(var(--color));
+		background: hsl(var(--color) / 0.1);
+		padding: 0.25rem 0.75rem;
+		border-radius: 9999px;
 	}
 
-	.timeline-content p:last-child {
-		color: hsl(var(--text-700));
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(24px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	@media (max-width: 768px) {
-		.header-content {
+		.competences-grid {
 			grid-template-columns: 1fr;
+		}
+
+		.competence-card {
+			flex-direction: column;
+			align-items: center;
 			text-align: center;
 		}
+	}
 
-		.profile-image {
-			margin: 0 auto;
-			width: 140px;
-			height: 140px;
+	@media (prefers-reduced-motion: reduce) {
+		.competences-page,
+		.competence-card {
+			animation: none;
+			opacity: 1;
 		}
 
-		.header-actions {
-			justify-content: center;
-		}
-
-		.skills-grid {
-			grid-template-columns: 1fr;
+		.hero-section {
+			animation: none;
 		}
 	}
 </style>

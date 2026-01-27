@@ -35,7 +35,6 @@ export type Project = {
 	pnCompetence?: PNCompetence; // Compétence principale du Programme National
 	features?: ProjectFeature[];
 	screenshots?: { url: string; caption: string }[];
-	startDate?: Date;
 	endDate?: Date;
 	status?: 'En cours' | 'Terminé' | 'Archivé';
 };
@@ -69,7 +68,6 @@ const allProjects: Project[] = [
 			{ url: '/images/portfolio-projects.jpg', caption: 'Grille de projets responsive' },
 			{ url: '/images/portfolio-dark.jpg', caption: 'Mode dark avec transitions douces' }
 		],
-		startDate: new Date('2025-12-01'),
 		endDate: new Date('2026-01-26'),
 		status: 'Terminé'
 	},

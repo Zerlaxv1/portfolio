@@ -6,13 +6,7 @@
 	export let project: Project;
 </script>
 
-<article class="project-card">
-	<div class="card-header">
-		<h3>{project.title}</h3>
-	</div>
-
-	<p class="card-description">{project.short}</p>
-
+<article class="project-card" style:--comp-color={project.pnCompetence?.color}>
 	{#if project.pnCompetence}
 		{@const Icon = project.pnCompetence.icon}
 		<div class="card-competence-banner">
@@ -22,6 +16,12 @@
 			</a>
 		</div>
 	{/if}
+
+	<div class="card-header">
+		<h3>{project.title}</h3>
+	</div>
+
+	<p class="card-description">{project.short}</p>
 
 	{#if project.skills && project.skills.length > 0}
 		<div class="card-skills">
@@ -100,32 +100,33 @@
 	}
 
 	.card-competence-banner {
-		margin-bottom: 1.5rem;
-		padding-bottom: 1.5rem;
-		border-bottom: 1px solid hsl(var(--text-950) / 0.06);
+		margin: -2rem -2rem 1.5rem -2rem;
+		padding: 1rem 2rem;
+		background: linear-gradient(135deg, hsl(var(--comp-color) / 0.15) 0%, hsl(var(--comp-color) / 0.05) 100%);
+		border-bottom: 2px solid hsl(var(--comp-color) / 0.3);
+		border-radius: 12px 12px 0 0;
 	}
 
 	.competence-banner {
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		padding: 0.875rem 1.25rem;
-		background: linear-gradient(135deg, hsl(var(--primary-50)) 0%, hsl(var(--primary-100)) 100%);
-		color: hsl(var(--primary-700));
-		border-radius: 12px;
-		font-size: 0.95rem;
+		padding: 0.75rem 1rem;
+		background: hsl(var(--comp-color) / 0.1);
+		color: hsl(var(--comp-color));
+		border-radius: 8px;
+		font-size: 0.9rem;
 		font-weight: 700;
 		text-decoration: none;
 		transition: all 0.3s ease;
-		border: 2px solid hsl(var(--primary-200));
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+		border: 2px solid hsl(var(--comp-color) / 0.3);
 	}
 
 	.competence-banner:hover {
-		background: linear-gradient(135deg, hsl(var(--primary-100)) 0%, hsl(var(--primary-200)) 100%);
-		border-color: hsl(var(--primary-400));
-		transform: translateY(-2px);
-		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+		background: hsl(var(--comp-color) / 0.2);
+		border-color: hsl(var(--comp-color) / 0.5);
+		transform: scale(1.02);
+		box-shadow: 0 4px 12px hsl(var(--comp-color) / 0.25);
 	}
 
 	.card-skills {

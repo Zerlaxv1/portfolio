@@ -5,6 +5,7 @@
 	import { page } from '$app/stores';
 	import type { Skill } from '$lib/data/skills';
 	import { browser } from '$app/environment';
+	import { resolve } from '$app/paths';
 
 	// Récupérer toutes les compétences uniques
 	const allSkills: Skill[] = [];
@@ -57,7 +58,7 @@
 			<h2>Filtrer par technologie</h2>
 			<div class="skills-filter">
 				{#if selectedSkillId}
-					<a href="/projets" class="filter-badge filter-badge-all">
+					<a href={resolve("/projets")} class="filter-badge filter-badge-all">
 						Toutes
 					</a>
 				{/if}
@@ -89,7 +90,7 @@
 	{#if filteredProjects.length === 0}
 		<div class="empty-state">
 			<p>Aucun projet trouvé avec ce filtre.</p>
-			<a href="/projets" class="reset-link">Réinitialiser les filtres</a>
+			<a href={resolve("/projets")} class="reset-link">Réinitialiser les filtres</a>
 		</div>
 	{/if}
 </div>

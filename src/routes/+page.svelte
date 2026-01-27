@@ -156,6 +156,7 @@
 		text-align: center;
 		color: hsl(var(--text-600));
 		margin-bottom: 3rem;
+		max-width: 100%
 	}
 
 	.projects-grid {

@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import ThemeToggle from './ThemeToggle.svelte';
 
-	export let title = 'Ducceschi Nino';
+	export let title = 'Nino Ducceschi';
 </script>
 
 <header class="site-header">

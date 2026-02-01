@@ -16,7 +16,7 @@
 </script>
 
 <svelte:head>
-	<title>Accueil — Mon Portfolio</title>
+	<title>Accueil - Nino Ducceschi</title>
 	<meta
 		name="description"
 		content="Portfolio de développement web — Compétences, projets et réalisations"
@@ -27,18 +27,18 @@
 	<section class="hero-section">
 		<div class="hero-content">
 			<div class="hero-text">
-				<h1>Développeur Web Full-Stack</h1>
+				<h1>Etudiant en Informatique</h1>
 				<p class="hero-description">
-					Bienvenue sur mon portfolio — Un espace dédié à mes compétences, projets et réalisations
-					en développement web.
+					Étudiant en 3ème année à l'IUT 3 Paul Sabatier Toulouse, passionné par le développement
+					web et les technologies modernes.
 				</p>
 				<div class="hero-actions">
 					<Button href={resolve('/projets')} variant="primary" icon={FolderIcon}>
 						Découvrir mes projets
 					</Button>
-					<Button href={resolve('/competences')} variant="secondary" icon={UserIcon}
-						>Mes compétences</Button
-					>
+					<Button href={resolve('/competences')} variant="secondary" icon={UserIcon}>
+						Mes compétences
+					</Button>
 				</div>
 			</div>
 			<div class="hero-image">
@@ -156,7 +156,7 @@
 		text-align: center;
 		color: hsl(var(--text-600));
 		margin-bottom: 3rem;
-		max-width: 100%
+		max-width: 100%;
 	}
 
 	.projects-grid {

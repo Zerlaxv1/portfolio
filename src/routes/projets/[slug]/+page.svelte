@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 	import Button from '$lib/components/Button.svelte';
 	import SkillBadge from '$lib/components/SkillBadge.svelte';
 	import ArrowRightIcon from '~icons/ph/arrow-right';
@@ -11,7 +11,7 @@
 	const { data }: { data: PageData } = $props();
 	const project = $derived(data.project);
 
-	const formattedDate = $derived(() => {
+	const formattedDate = $derived.by(() => {
 		if (!project.endDate) return null;
 
 		const formatter = new Intl.DateTimeFormat('fr-FR', {
@@ -132,7 +132,7 @@
 			<div class="screenshots-grid">
 				{#each project.screenshots as screenshot}
 					<figure class="screenshot-item">
-						<img src={screenshot.url} alt={screenshot.caption} />
+						<img src={screenshot.component} alt={screenshot.caption} />
 						<figcaption>{screenshot.caption}</figcaption>
 					</figure>
 				{/each}
@@ -263,11 +263,18 @@
 		border-radius: 16px;
 		overflow: hidden;
 		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+		max-height: 500px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: hsl(var(--background-100));
 	}
 
 	.project-cover img {
 		width: 100%;
-		height: auto;
+		height: 100%;
+		max-height: 500px;
+		object-fit: contain;
 		display: block;
 	}
 

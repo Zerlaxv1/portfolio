@@ -17,10 +17,19 @@ import SparkleIcon from '~icons/ph/sparkle';
 import RocketLaunchIcon from '~icons/ph/rocket-launch';
 import EyeIcon from '~icons/ph/eye';
 import CheckCircleIcon from '~icons/ph/check-circle';
+import bookletScreenshotExercice from '$lib/assets/images/booklet/booklet ex.webp';
+import bookletScreenshotHome from '$lib/assets/images/booklet/booklet home.webp';
+import bookletScreenshotProf from '$lib/assets/images/booklet/booklet prof.webp';
+import bookletLogo from '$lib/assets/images/booklet/bookletlogo.svg';
 
 export type ProjectFeature = {
 	text: string;
 	icon: Component;
+};
+
+export type ProjectScreenshot = {
+	component: string;
+	caption: string;
 };
 
 export type Project = {
@@ -34,7 +43,7 @@ export type Project = {
 	skills?: Skill[]; // Compétences techniques (TypeScript, Svelte, etc.)
 	pnCompetence?: PNCompetence; // Compétence principale du Programme National
 	features?: ProjectFeature[];
-	screenshots?: { url: string; caption: string }[];
+	screenshots?: ProjectScreenshot[];
 	endDate?: Date;
 	status?: 'En cours' | 'Terminé' | 'Archivé';
 };
@@ -45,9 +54,8 @@ const allProjects: Project[] = [
 		title: 'Portfolio Moderne',
 		short: 'Site portfolio responsive avec SvelteKit et thème dark/light.',
 		description: PortfolioModerneDescription,
-		cover: '/images/portfolio-cover.jpg',
 		github: 'https://github.com/Zerlaxv1/portfolio',
-		demo: 'https://portfolio.example.com',
+		demo: 'https://zerlaxv1.github.io/portfolio/',
 		skills: [
 			getSkill('sveltekit'),
 			getSkill('typescript'),
@@ -63,11 +71,6 @@ const allProjects: Project[] = [
 			{ text: 'Accessibilité WCAG AA', icon: EyeIcon },
 			{ text: 'Déploiement statique', icon: CheckCircleIcon }
 		],
-		screenshots: [
-			{ url: '/images/portfolio-home.jpg', caption: "Page d'accueil avec hero section" },
-			{ url: '/images/portfolio-projects.jpg', caption: 'Grille de projets responsive' },
-			{ url: '/images/portfolio-dark.jpg', caption: 'Mode dark avec transitions douces' }
-		],
 		endDate: new Date('2026-01-26'),
 		status: 'Terminé'
 	},
@@ -76,12 +79,7 @@ const allProjects: Project[] = [
 		title: 'Booklet',
 		description: BookletDescription,
 		short: "Application d'apprentissage d'anglais ludique pour etudiants.",
-		cover: '/images/booklet-cover.png',
-		screenshots: [
-			{ url: '/images/portfolio-home.jpg', caption: "Page d'accueil avec hero section" },
-			{ url: '/images/portfolio-projects.jpg', caption: 'Grille de projets responsive' },
-			{ url: '/images/portfolio-dark.jpg', caption: 'Mode dark avec transitions douces' }
-		],
+		cover: bookletLogo,
 		skills: [
 			getSkill('sveltekit'),
 			getSkill('typescript'),
@@ -91,7 +89,12 @@ const allProjects: Project[] = [
 			getSkill('vite')
 		].filter((skill): skill is Skill => skill !== undefined),
 		pnCompetence: getPNCompetence('realiser'),
-		endDate: new Date('2025-10-13'),
+		screenshots: [
+			{ component: bookletScreenshotExercice, caption: "Page d'exercice interactif" },
+			{ component: bookletScreenshotHome, caption: "Page d'accueil de l'application" },
+			{ component: bookletScreenshotProf, caption: "Espace professeur pour gérer les élèves" }
+		],
+		endDate: new Date('2026-01-01'),
 		status: 'Terminé'
 	},
 	{
@@ -99,12 +102,9 @@ const allProjects: Project[] = [
 		title: 'Gestion Immobilière',
 		short: 'Application Java de gestion de portefeuille immobilier avec interface Swing.',
 		description: GestionImmoDescription,
-		skills: [
-			getSkill('java'),
-			getSkill('swing'),
-			getSkill('sqlite'),
-			getSkill('junit')
-		].filter((skill): skill is Skill => skill !== undefined),
+		skills: [getSkill('java'), getSkill('swing'), getSkill('sqlite'), getSkill('junit')].filter(
+			(skill): skill is Skill => skill !== undefined
+		),
 		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2024-12-20'),
 		status: 'Terminé'
@@ -130,10 +130,9 @@ const allProjects: Project[] = [
 		title: 'Laundry Tracker',
 		short: 'Application mobile de suivi des machines à laver du campus IUT Paul Sabatier.',
 		description: LaundryTrackerDescription,
-		skills: [
-			getSkill('dart'),
-			getSkill('flutter')
-		].filter((skill): skill is Skill => skill !== undefined),
+		skills: [getSkill('dart'), getSkill('flutter')].filter(
+			(skill): skill is Skill => skill !== undefined
+		),
 		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2025-06-15'),
 		status: 'Terminé'
@@ -159,9 +158,7 @@ const allProjects: Project[] = [
 		title: 'Proxy FTP',
 		short: 'Proxy FTP complet implémenté en C sans dépendances externes.',
 		description: ProxyFTPDescription,
-		skills: [
-			getSkill('c')
-		].filter((skill): skill is Skill => skill !== undefined),
+		skills: [getSkill('c')].filter((skill): skill is Skill => skill !== undefined),
 		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2025-01-16'),
 		status: 'Terminé'
@@ -171,9 +168,7 @@ const allProjects: Project[] = [
 		title: 'Chiffrement César & Vigenère',
 		short: 'Implémentation en C des algorithmes de chiffrement classiques.',
 		description: EncryptionCDescription,
-		skills: [
-			getSkill('c')
-		].filter((skill): skill is Skill => skill !== undefined),
+		skills: [getSkill('c')].filter((skill): skill is Skill => skill !== undefined),
 		pnCompetence: getPNCompetence('realiser'),
 		endDate: new Date('2024-05-26'),
 		status: 'Terminé'

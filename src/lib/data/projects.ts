@@ -6,7 +6,8 @@ import type { Component } from 'svelte';
 import PortfolioModerneDescription from '$lib/components/projects/PortfolioModerneDescription.svelte';
 import BookletDescription from '$lib/components/projects/BookletDescription.svelte';
 import GestionImmoDescription from '$lib/components/projects/GestionImmoDescription.svelte';
-import RugbyDescription from '$lib/components/projects/RugbyDescription.svelte';
+import RugbyMonolithDescription from '$lib/components/projects/RugbyMonolithDescription.svelte';
+import RugbyRewriteDescription from '$lib/components/projects/RugbyRewriteDescription.svelte';
 import LaundryTrackerDescription from '$lib/components/projects/LaundryTrackerDescription.svelte';
 import LeChatDescription from '$lib/components/projects/LeChatDescription.svelte';
 import ProxyFTPDescription from '$lib/components/projects/ProxyFTPDescription.svelte';
@@ -41,7 +42,7 @@ export type Project = {
 	github?: string;
 	demo?: string;
 	skills?: Skill[]; // Compétences techniques (TypeScript, Svelte, etc.)
-	pnCompetence?: PNCompetence; // Compétence principale du Programme National
+	pnCompetences?: PNCompetence[]; // Compétences du Programme National
 	features?: ProjectFeature[];
 	screenshots?: ProjectScreenshot[];
 	endDate?: Date;
@@ -62,7 +63,14 @@ const allProjects: Project[] = [
 			getSkill('vite'),
 			getSkill('phosphor')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetence: getPNCompetence('realiser'),
+		pnCompetences: [
+			getPNCompetence('realiser'),
+			getPNCompetence('optimiser'),
+			getPNCompetence('administrer'),
+			getPNCompetence('gerer'),
+			getPNCompetence('conduire'),
+			getPNCompetence('collaborer')
+		].filter((competence): competence is PNCompetence => competence !== undefined),
 		features: [
 			{ text: 'Thème dark/light avec persistance', icon: MoonIcon },
 			{ text: 'Design responsive (mobile-first)', icon: DeviceMobileIcon },
@@ -88,7 +96,11 @@ const allProjects: Project[] = [
 			getSkill('phosphor'),
 			getSkill('vite')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetence: getPNCompetence('realiser'),
+		pnCompetences: [
+			getPNCompetence('realiser'),
+			getPNCompetence('optimiser'),
+			getPNCompetence('collaborer')
+		].filter((competence): competence is PNCompetence => competence !== undefined),
 		screenshots: [
 			{ component: bookletScreenshotExercice, caption: "Page d'exercice interactif" },
 			{ component: bookletScreenshotHome, caption: "Page d'accueil de l'application" },
@@ -105,15 +117,22 @@ const allProjects: Project[] = [
 		skills: [getSkill('java'), getSkill('swing'), getSkill('sqlite'), getSkill('junit')].filter(
 			(skill): skill is Skill => skill !== undefined
 		),
-		pnCompetence: getPNCompetence('realiser'),
+		pnCompetences: [
+			getPNCompetence('realiser'),
+			getPNCompetence('optimiser'),
+			getPNCompetence('administrer'),
+			getPNCompetence('gerer'),
+			getPNCompetence('conduire'),
+			getPNCompetence('collaborer')
+		].filter((competence): competence is PNCompetence => competence !== undefined),
 		endDate: new Date('2024-12-20'),
 		status: 'Terminé'
 	},
 	{
 		slug: 'rugby-manager',
 		title: 'Rugby Manager',
-		short: 'Application web PHP pour la gestion d’une équipe de rugby amateur.',
-		description: RugbyDescription,
+		short: "Mini-projet PHP monolithique pour choisir un sport et gerer une equipe.",
+		description: RugbyMonolithDescription,
 		skills: [
 			getSkill('php'),
 			getSkill('mysql'),
@@ -121,19 +140,50 @@ const allProjects: Project[] = [
 			getSkill('html'),
 			getSkill('css')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetence: getPNCompetence('realiser'),
-		endDate: new Date('2024-05-30'),
+		pnCompetences: [
+			getPNCompetence('realiser'),
+			getPNCompetence('optimiser'),
+			getPNCompetence('administrer'),
+			getPNCompetence('gerer')
+		].filter((competence): competence is PNCompetence => competence !== undefined),
+		endDate: new Date('2024-11-30'),
+		status: 'Terminé'
+	},
+	{
+		slug: 'rugby-manager-rewrite',
+		title: 'Rugby Manager Refonte (Web + API)',
+		short: 'Refonte en deux depots : front MVC et API REST securisee par JWT.',
+		description: RugbyRewriteDescription,
+		skills: [
+			getSkill('php'),
+			getSkill('mysql'),
+			getSkill('frankenui'),
+			getSkill('html'),
+			getSkill('css')
+		].filter((skill): skill is Skill => skill !== undefined),
+		pnCompetences: [
+			getPNCompetence('realiser'),
+			getPNCompetence('optimiser'),
+			getPNCompetence('administrer'),
+			getPNCompetence('gerer')
+		].filter((competence): competence is PNCompetence => competence !== undefined),
+		endDate: new Date('2025-03-31'),
 		status: 'Terminé'
 	},
 	{
 		slug: 'laundry-tracker',
-		title: 'Laundry Tracker',
+		title: 'LaundrIUT',
 		short: 'Application mobile de suivi des machines à laver du campus IUT Paul Sabatier.',
 		description: LaundryTrackerDescription,
 		skills: [getSkill('dart'), getSkill('flutter')].filter(
 			(skill): skill is Skill => skill !== undefined
 		),
-		pnCompetence: getPNCompetence('realiser'),
+		pnCompetences: [
+			getPNCompetence('realiser'),
+			getPNCompetence('optimiser'),
+			getPNCompetence('gerer'),
+			getPNCompetence('conduire')
+		].filter((competence): competence is PNCompetence => competence !== undefined),
 		endDate: new Date('2025-06-15'),
 		status: 'Terminé'
 	},
@@ -149,7 +199,12 @@ const allProjects: Project[] = [
 			getSkill('html'),
 			getSkill('css')
 		].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetence: getPNCompetence('realiser'),
+		pnCompetences: [
+			getPNCompetence('realiser'),
+			getPNCompetence('optimiser'),
+			getPNCompetence('gerer'),
+			getPNCompetence('conduire')
+		].filter((competence): competence is PNCompetence => competence !== undefined),
 		endDate: new Date('2025-03-25'),
 		status: 'Terminé'
 	},
@@ -159,7 +214,11 @@ const allProjects: Project[] = [
 		short: 'Proxy FTP complet implémenté en C sans dépendances externes.',
 		description: ProxyFTPDescription,
 		skills: [getSkill('c')].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetence: getPNCompetence('realiser'),
+		pnCompetences: [getPNCompetence('optimiser'),
+						getPNCompetence('administrer')
+		].filter(
+			(competence): competence is PNCompetence => competence !== undefined
+		),
 		endDate: new Date('2025-01-16'),
 		status: 'Terminé'
 	},
@@ -169,7 +228,10 @@ const allProjects: Project[] = [
 		short: 'Implémentation en C des algorithmes de chiffrement classiques.',
 		description: EncryptionCDescription,
 		skills: [getSkill('c')].filter((skill): skill is Skill => skill !== undefined),
-		pnCompetence: getPNCompetence('realiser'),
+		pnCompetences: [
+			getPNCompetence('optimiser'),
+			getPNCompetence('administrer')
+		].filter((competence): competence is PNCompetence => competence !== undefined),
 		endDate: new Date('2024-05-26'),
 		status: 'Terminé'
 	}

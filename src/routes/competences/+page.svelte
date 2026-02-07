@@ -12,7 +12,7 @@
 
 	// Compter les projets par compétence
 	function getProjectCount(compSlug: string) {
-		return projects.filter((p) => p.pnCompetence?.slug === compSlug).length;
+		return projects.filter((p) => p.pnCompetences?.some((c) => c.slug === compSlug)).length;
 	}
 </script>
 

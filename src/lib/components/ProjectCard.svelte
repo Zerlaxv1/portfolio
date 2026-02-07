@@ -5,18 +5,10 @@
 	import Button from './Button.svelte';
 	import ArrowSquareOutIcon from '~icons/ph/arrow-square-out';
 
-	export let project: Project;
+	const { project }: { project: Project } = $props();
 </script>
 
-<article class="project-card" style:--comp-color={project.pnCompetence?.color}>
-	{#if project.pnCompetence}
-		<a
-			href={resolve(`/competences/${project.pnCompetence.slug}`)}
-			class="card-competence-banner"
-		>
-			{project.pnCompetence.title}
-		</a>
-	{/if}
+<article class="project-card">
 
 	<div class="card-header">
 		<h3>{project.title}</h3>
@@ -26,7 +18,7 @@
 
 	{#if project.skills && project.skills.length > 0}
 		<div class="card-skills">
-			{#each project.skills as skill}
+			{#each project.skills as skill (skill.id)}
 				<SkillBadge {skill} size="sm" clickable={true} />
 			{/each}
 		</div>
@@ -92,24 +84,6 @@
 		flex-grow: 1;
 	}
 
-	.card-competence-banner {
-		display: block;
-		margin: -2rem -2rem 1.5rem -2rem;
-		padding: 0.5rem 1rem;
-		background: hsl(var(--comp-color) / 0.12);
-		color: hsl(var(--comp-color));
-		text-align: center;
-		font-size: 0.8rem;
-		font-weight: 600;
-		text-decoration: none;
-		transition: all 0.2s ease;
-		border-radius: 12px 12px 0 0;
-	}
-
-	.card-competence-banner:hover {
-		background: hsl(var(--comp-color) / 0.2);
-		text-decoration: underline;
-	}
 
 	.card-skills {
 		display: flex;
@@ -142,10 +116,6 @@
 	@media (prefers-reduced-motion: reduce) {
 		.project-card,
 		.link-details,
-		.card-competence-banner {
-			transition: none;
-		}
-
 		.project-card:hover {
 			transform: none;
 		}

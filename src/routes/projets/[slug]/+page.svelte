@@ -33,16 +33,22 @@
 		<h1>{project.title}</h1>
 		<p class="project-tagline">{project.short}</p>
 
-		{#if project.pnCompetence}
-			{@const Icon = project.pnCompetence.icon}
+		{#if project.pnCompetences && project.pnCompetences.length > 0}
 			<div class="competence-banner-wrapper">
-				<a href={resolve(`/competences/${project.pnCompetence.slug}`)} class="competence-banner">
-					<Icon width="24" height="24" />
-					<div class="competence-content">
-						<span class="competence-label">Compétence principale</span>
-						<span class="competence-title">{project.pnCompetence.title}</span>
-					</div>
-				</a>
+				<span class="competence-section-label">Compétences PN</span>
+				<div class="competence-badges">
+					{#each project.pnCompetences as competence (competence.slug)}
+						{@const Icon = competence.icon}
+						<a
+							href={resolve(`/competences/${competence.slug}`)}
+							class="competence-badge"
+							style={`--color: ${competence.color}`}
+						>
+							<Icon width="20" height="20" />
+							<span>{competence.title}</span>
+						</a>
+					{/each}
+				</div>
 			</div>
 		{/if}
 
@@ -96,7 +102,7 @@
 		<section class="project-section">
 			<h2>Technologies utilisées</h2>
 			<div class="skills-list">
-				{#each project.skills as skill}
+				{#each project.skills as skill (skill.id)}
 					<SkillBadge {skill} />
 				{/each}
 			</div>
@@ -115,7 +121,7 @@
 		<section class="project-section">
 			<h2>Fonctionnalités principales</h2>
 			<ul class="features-list">
-				{#each project.features as feature}
+				{#each project.features as feature (feature.text)}
 					{@const Icon = feature.icon}
 					<li>
 						<Icon width="18" height="18" class="feature-icon" />
@@ -130,7 +136,7 @@
 		<section class="project-section">
 			<h2>Captures d'écran</h2>
 			<div class="screenshots-grid">
-				{#each project.screenshots as screenshot}
+				{#each project.screenshots as screenshot (screenshot.component)}
 					<figure class="screenshot-item">
 						<img src={screenshot.component} alt={screenshot.caption} />
 						<figcaption>{screenshot.caption}</figcaption>
@@ -176,51 +182,47 @@
 
 	.competence-banner-wrapper {
 		margin-bottom: 2rem;
-	}
-
-	.competence-banner {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		padding: 1.25rem 1.5rem;
-		background: linear-gradient(135deg, hsl(var(--primary-50)) 0%, hsl(var(--primary-100)) 100%);
-		border: 2px solid hsl(var(--primary-200));
-		border-radius: 16px;
-		text-decoration: none;
-		transition: all 0.3s ease;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-	}
-
-	.competence-banner:hover {
-		background: linear-gradient(135deg, hsl(var(--primary-100)) 0%, hsl(var(--primary-200)) 100%);
-		border-color: hsl(var(--primary-400));
-		transform: translateY(-2px);
-		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-	}
-
-	.competence-banner :global(svg) {
-		color: hsl(var(--primary-600));
-		flex-shrink: 0;
-	}
-
-	.competence-content {
 		display: flex;
 		flex-direction: column;
-		gap: 0.25rem;
+		gap: 0.75rem;
 	}
 
-	.competence-label {
-		font-size: 0.75rem;
+	.competence-section-label {
+		font-size: 0.8rem;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: hsl(var(--primary-600));
+		color: hsl(var(--text-600));
 	}
 
-	.competence-title {
-		font-size: 1.125rem;
-		font-weight: 700;
-		color: hsl(var(--primary-700));
+	.competence-badges {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.competence-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1rem;
+		border-radius: 999px;
+		background: hsl(var(--color) / 0.12);
+		border: 1px solid hsl(var(--color) / 0.3);
+		color: hsl(var(--color));
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+	}
+
+	.competence-badge:hover {
+		background: hsl(var(--color) / 0.2);
+		transform: translateY(-2px);
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+	}
+
+	.competence-badge :global(svg) {
+		flex-shrink: 0;
 	}
 
 	.project-meta {

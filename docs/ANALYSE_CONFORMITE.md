@@ -11,7 +11,7 @@
 
 #### 1. Site web sur Git ✅
 
-- ✅ Projet hébergé sur Git
+- ✅ Projet hébergé sur Git (consignes portfolio)
 - ✅ Structure de fichiers organisée
 - ✅ Commits réguliers et descriptifs en français
 
@@ -19,6 +19,7 @@
 
 - ✅ Page `/competences` dédiée aux compétences
 - ✅ Compétences organisées par catégories (Frontend, Outils & Technologies)
+- ✅ Référentiel PN BUT Info : 6 compétences (Réaliser, Optimiser, Administrer, Gérer, Conduire, Collaborer)
 - ✅ Utilisation de badges visuels avec icônes (SkillBadge)
 - ✅ Pas de jargon BUT (pas de "composante essentielle", "trace", etc.)
 
@@ -28,9 +29,24 @@
 - ✅ Détails de projet avec descriptions
 - ✅ Compétences liées à chaque projet (badges visibles)
 
+#### 3.1. SAE 5.Real.01 (Booklet) ✅
+
+- ✅ SAE 5.Real.01 : Développement avancé (PN BUT Info, p.148)
+- ✅ Compétences ciblées : Réaliser, Optimiser, Collaborer
+- ✅ Objectif : application en équipe, démarche iterative/incrementale, CI, qualite IHM/logicielle
+- ✅ Livrables pro attendus : suivi projet, analyse/conception, code documente, jeux d'essais, revue finale, guide d'utilisation
+
+#### 3.2. Ressource R5.02 (Portfolio) ✅
+
+- ✅ Ressource R5.02 : Projet personnel et professionnel (PN BUT Info, p.151)
+- ✅ Compétences ciblees : Réaliser, Optimiser, Administrer, Gerer, Conduire, Collaborer
+- ✅ Objectif : insertion pro, formalisation du plan de carriere, posture professionnelle
+- ✅ SAÉ associee : PORTFOLIO | Portfolio
+- ✅ Apprentissages critiques : AC31.01, AC31.02, AC31.03, AC32.01, AC32.02, AC32.03, AC33.01, AC33.02, AC33.03, AC33.04, AC34.01, AC34.02, AC34.03, AC34.04, AC35.01, AC35.02, AC35.03, AC36.01, AC36.02, AC36.03, AC36.04
+
 #### 4. CV téléchargeable ✅
 
-- ✅ CV disponible en PDF (`/CV_Ducceschi_Nino.pdf`)
+- ✅ CV disponible en PDF (`/CV_Ducceschi_Nino.pdf`) (consignes portfolio)
 - ✅ Bouton de téléchargement sur la page Compétences
 
 #### 5. Formulaire de contact ✅
@@ -99,10 +115,42 @@
 
 #### 3. **Transitivité Projets ↔ Compétences** ⚠️
 
-- ⚠️ Les compétences sont affichées sur les projets (ProjectCard + page détail)
+- ⚠️ Les compétences sont affichées sur les projets (page détail)
 - ⚠️ Mais **pas de liens cliquables** depuis les compétences vers les projets qui les utilisent
 - 📝 **Action requise :** Rendre les SkillBadges cliquables pour filtrer/afficher les projets associés
 - 💡 **Impact :** Critère important de la grille ("Hyperlien entre Projets et Compétences")
+
+#### 3.1. **Mapping AC -> PN (SAE 5.Real.01)** ✅
+
+- ✅ AC31.01 -> Réaliser
+- ✅ AC31.03 -> Réaliser
+- ✅ AC32.01 -> Optimiser
+- ✅ AC32.03 -> Optimiser
+- ✅ AC36.01 -> Collaborer
+
+#### 3.2. **Mapping AC -> PN (R5.02 Portfolio)** ✅
+
+- ✅ AC31.01 -> Réaliser
+- ✅ AC31.02 -> Réaliser
+- ✅ AC31.03 -> Réaliser
+- ✅ AC32.01 -> Optimiser
+- ✅ AC32.02 -> Optimiser
+- ✅ AC32.03 -> Optimiser
+- ✅ AC33.01 -> Administrer
+- ✅ AC33.02 -> Administrer
+- ✅ AC33.03 -> Administrer
+- ✅ AC33.04 -> Administrer
+- ✅ AC34.01 -> Gerer
+- ✅ AC34.02 -> Gerer
+- ✅ AC34.03 -> Gerer
+- ✅ AC34.04 -> Gerer
+- ✅ AC35.01 -> Conduire
+- ✅ AC35.02 -> Conduire
+- ✅ AC35.03 -> Conduire
+- ✅ AC36.01 -> Collaborer
+- ✅ AC36.02 -> Collaborer
+- ✅ AC36.03 -> Collaborer
+- ✅ AC36.04 -> Collaborer
 
 #### 4. **Page Compétences : personnalisation limitée** ⚠️
 
@@ -135,8 +183,8 @@
 
 #### 8. **Projets insuffisants** 🟢
 
-- ⚠️ Un seul projet dans `projects.ts` (Portfolio Moderne)
-- 📝 **Action recommandée :** Ajouter 3-5 projets supplémentaires avec :
+- ⚠️ Le nombre de projets doit rester suffisant et varié pour illustrer les compétences (grille d'évaluation)
+- 📝 **Action recommandée :** Maintenir une sélection solide (3-5 projets minimum pertinents) avec :
   - Descriptions détaillées
   - Captures d'écran réelles
   - Liens GitHub/démo fonctionnels
@@ -174,7 +222,7 @@
 | Effort esthétique                   | ✅   | Design moderne et soigné                   |
 | Personnalisation compétences        | ⚠️   | Présentation technique, manque contexte    |
 | Hyperlien Projets ↔ Compétences     | ⚠️   | Lien unidirectionnel (projet → compétence) |
-| Description et illustration projets | ⚠️   | 1 seul projet, captures manquantes         |
+| Description et illustration projets | ⚠️   | Captures et contexte à renforcer           |
 | Orthographe correcte                | ✅   | À vérifier en détail                       |
 | Discours adapté                     | ⚠️   | Vocabulaire parfois trop technique         |
 | Lien GitHub                         | ❌   | Manquant                                   |
@@ -247,3 +295,11 @@ Avec les corrections prioritaires, le portfolio peut atteindre **17-18/20** sur 
 ---
 
 **Conclusion :** Le site a de très bonnes bases techniques et ergonomiques, mais nécessite **plus de contenu** et quelques ajustements pour répondre pleinement aux exigences de la grille d'évaluation.
+
+---
+
+## 📚 Sources utilisées (PDF)
+
+- Consignes portfolio : portfolio de compétences, preuves, CV, site web sur Git, règles ergonomiques de base.
+- Grille Eval Portfolio S6 : photo sur la page d'accueil, compétences/projets dans le menu, personnalisation des compétences, hyperlien Projets ↔ Compétences, description/illustration des projets, site complet (GitHub + CV + contact), mise en contexte (client/besoin/solution/résultat).
+- PN BUT Info 2022 : référentiel des 6 compétences du BUT Informatique et démarche portfolio.

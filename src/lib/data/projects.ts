@@ -68,7 +68,8 @@ const allProjects: Project[] = [
 		pnCompetences: [getPNCompetence('realiser')].filter(
 			(competence): competence is PNCompetence => competence !== undefined
 		),
-		status: 'Terminé'
+		status: 'Terminé',
+		endDate: new Date('2024-05'),
 	},
 	{
 		slug: 'portfolio',

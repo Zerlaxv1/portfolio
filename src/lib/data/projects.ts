@@ -26,7 +26,8 @@ import LeChatImage from '$lib/assets/images/le-chat/image.png';
 import LeChatImage2 from '$lib/assets/images/le-chat/image2.png';
 import RugbyImage from '$lib/assets/images/rugby/image1.png';
 import RugbyImage2 from '$lib/assets/images/rugby/image2.png';
-
+import FromageImage from '$lib/assets/images/fromage/image.png';
+import BiensImmoImage from '$lib/assets/images/biens-immobilié/image.png';
 
 export type ProjectFeature = {
 	text: string;
@@ -56,8 +57,22 @@ export type Project = {
 
 const allProjects: Project[] = [
 	{
-		slug: 'portfolio-moderne',
-		title: 'Portfolio Moderne',
+		slug: 'fromages-panier',
+		title: 'Panier & Facture Fromages',
+		short:
+			"Application Swing de panier et facture pour fromages avec frais de livraison dynamiques.",
+		cover: FromageImage,
+		skills: [getSkill('java'), getSkill('swing')].filter(
+			(skill): skill is Skill => skill !== undefined
+		),
+		pnCompetences: [getPNCompetence('realiser')].filter(
+			(competence): competence is PNCompetence => competence !== undefined
+		),
+		status: 'Terminé'
+	},
+	{
+		slug: 'portfolio',
+		title: 'Portfolio',
 		short: 'Site portfolio responsive avec SvelteKit et thème dark/light.',
 		description: PortfolioModerneDescription,
 		github: 'https://github.com/Zerlaxv1/portfolio',
@@ -119,6 +134,7 @@ const allProjects: Project[] = [
 		title: 'Gestion Immobilière',
 		short: 'Application Java de gestion de portefeuille immobilier avec interface Swing.',
 		description: GestionImmoDescription,
+		cover: BiensImmoImage,
 		skills: [getSkill('java'), getSkill('swing'), getSkill('sqlite'), getSkill('junit')].filter(
 			(skill): skill is Skill => skill !== undefined
 		),

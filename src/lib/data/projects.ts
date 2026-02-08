@@ -22,6 +22,11 @@ import bookletScreenshotExercice from '$lib/assets/images/booklet/booklet ex.web
 import bookletScreenshotHome from '$lib/assets/images/booklet/booklet home.webp';
 import bookletScreenshotProf from '$lib/assets/images/booklet/booklet prof.webp';
 import bookletLogo from '$lib/assets/images/booklet/bookletlogo.svg';
+import LeChatImage from '$lib/assets/images/le-chat/image.png';
+import LeChatImage2 from '$lib/assets/images/le-chat/image2.png';
+import RugbyImage from '$lib/assets/images/rugby/image1.png';
+import RugbyImage2 from '$lib/assets/images/rugby/image2.png';
+
 
 export type ProjectFeature = {
 	text: string;
@@ -147,6 +152,10 @@ const allProjects: Project[] = [
 			getPNCompetence('gerer')
 		].filter((competence): competence is PNCompetence => competence !== undefined),
 		endDate: new Date('2024-11-30'),
+		screenshots: [
+			{ component: RugbyImage, caption: 'Page d’accueil avec choix du sport' },
+			{ component: RugbyImage2, caption: 'Interface de gestion d’équipe' }
+		],
 		status: 'Terminé'
 	},
 	{
@@ -206,7 +215,11 @@ const allProjects: Project[] = [
 			getPNCompetence('conduire')
 		].filter((competence): competence is PNCompetence => competence !== undefined),
 		endDate: new Date('2025-03-25'),
-		status: 'Terminé'
+		status: 'Terminé',
+		screenshots: [
+			{ component: LeChatImage, caption: 'Interface de messagerie avec des messages' },
+			{ component: LeChatImage2, caption: 'Interface avec liste des channels' }
+		]
 	},
 	{
 		slug: 'proxy-ftp',

@@ -42,14 +42,16 @@ import MoonIcon from 'phosphor-svelte/lib/MoonIcon';
 Always use the pattern `phosphor-svelte/lib/{IconName}` for individual icon imports.
 
 <!-- skill-ninja-START -->
+## Agent Skills
 
-## Installed Skills
+> **IMPORTANT**: Prefer skill-led reasoning over pre-training-led reasoning.
+> Read the relevant SKILL.md before working on tasks covered by these skills.
 
-The following skills are available in this workspace.
+### Skills
 
-| Skill                              | When to Use                                                                                                                                |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| [pdf](.github/skills/pdf/SKILL.md) | Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. |
+| Skill | Description |
+|-------|-------------|
+| [pdf](.github/skills/pdf/SKILL.md) | Use this skill whenever the user wants to do anything with PDF files. |
 
 <!-- skill-ninja-END -->
 
